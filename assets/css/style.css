@@ -34,6 +34,10 @@ body, html {
 	margin: 0 40px;
 }
 
+.hiddenAtStart {
+	display: none;
+}
+
 .row > .col {
 	padding: 0 0.5px;
 }
@@ -68,9 +72,6 @@ input[type=text] {
 
 /* Sets the properties of the 'submit' button */
 input[type=submit] {
-	height: 43px;
-	width: 100%;
-	border: 1px solid#fbdb65;
 	color: #fff;
 	background-color: #fbdb65;
 }
