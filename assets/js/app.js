@@ -11,18 +11,22 @@ function searchParks(){
       method: 'GET'
     }).done(function(response) {
       var info = response.data;
+
       var locations = [];
 
-      console.log(info);
-      console.log(info[1].name);
+      // console.log(info);
+      // console.log(info[1].name);
 
       for (var i = 0; i < info.length; i++) {
-      	locations.push(info[i].latLong);
+        locations.push(info[i].name);
+        locations.push(info[i].latLong);
+        
         var parksDiv = $("<div class='MAKEMEBOLD!'>" + info[i].name + "</div>");
         $("#parks").append(parksDiv);
       };
 
-      // console.log(locations)
+
+      console.log(locations)
 
     });
 }
