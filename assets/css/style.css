@@ -1,0 +1,95 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.hero-image {
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.05), 
+      rgba(0, 0, 0, 0.5)
+    ),
+  url("../images/main-bg.jpg");
+  height: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-text > h1 {
+	font-family: cursive;
+  font-size: 60px;
+}
+
+.custom {
+	margin: 0 40px;
+}
+
+.row > .col {
+	padding: 0 0.5px;
+}
+
+/* Set the button properties */
+button {
+	text-align: center;
+	font-size: 15px;
+	font-weight: 500;
+	color: #000;
+	color: #fff;
+	background-color: #3e3f48;
+	border: 2px solid #3e3f48;
+	padding: 8.5px 0px;
+	width: 100%;
+}
+
+/* Set the button hover properties */
+button:hover {
+	background-color: #717782;
+	text-decoration: none;
+	border: 2px solid #fff;
+}
+
+input[type=text] {
+	text-align: center;
+	height: 43px;
+	color: #666;
+	width: 100%;
+	padding-left: 10px;
+}
+
+/* Sets the properties of the 'submit' button */
+input[type=submit] {
+	height: 43px;
+	width: 100%;
+	border: 1px solid#fbdb65;
+	color: #fff;
+	background-color: #fbdb65;
+}
+
+/* Sets the properties of the 'submit' button upon hover */
+input[type=submit]:hover {
+	background-color: #fbc365;
+}
+
+@media (max-width: 992px) {
+
+	.hero-text > h1 {
+		font-family: cursive;
+	  font-size: 40px;
+	}
+
+	.navbar-nav {
+		flex-direction: row;
+		margin: 0 auto;
+	}
+
+}
