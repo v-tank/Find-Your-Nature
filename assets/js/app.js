@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $("#state-select").on("click", function(event){
 	var selected = document.getElementById('state').value;
 	console.log(selected);
@@ -45,4 +44,3 @@ searchParks();
 
 })
 
->>>>>>> 67dc1558e4c504805f799c8c21563532bdd96aeb
