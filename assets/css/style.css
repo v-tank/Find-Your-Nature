@@ -81,6 +81,32 @@ input[type=submit]:hover {
 	background-color: #fbc365;
 }
 
+.map {
+	width: 300PX;
+	height: 400px;
+}
+
+
+.contdiv {
+  width: 310px;
+  height: 410px;
+  background-color: grey;
+  margin: 5px;
+	float: left;
+	text-align: center;
+	color: white;
+}
+
+.mainmap {
+	width: 550PX;
+	height: 410px;
+	background-color: grey;
+	margin: 5px;
+	text-align: center;
+	color: black;
+	float: left;
+}
+
 @media (max-width: 992px) {
 
 	.hero-text > h1 {
