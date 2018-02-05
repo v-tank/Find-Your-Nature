@@ -43,7 +43,7 @@ function getStateLatLng (location){
 }
 
 $(document).on("click", ".dropdown-item", function() {
-  mainMapInit([["",$(this).data("geo-value")]], "map", 10, [$(this).data("geo-value")]);
+  mainMapInit([["",$(this).data("value-geo")]], "map", 10, [$(this).data("value-geo")]);
   waqiMapInit();
 });
 
@@ -71,7 +71,6 @@ function mainMapInit(parks, div, zooom, center){
 
 
 function onPageLoad(){
-  $("#parks-indicators").empty();
 
   $.ajax({
     url: 'https://developer.nps.gov/api/v1/parks',
@@ -95,7 +94,6 @@ function onPageLoad(){
         uluru = getLatLngFromString(results[i].latLong);               
         parks.push([results[i].fullName, uluru]);
       }
-
 
       var fullName = results[i]["fullName"];
       var description = results[i]["description"];
@@ -122,7 +120,9 @@ function onPageLoad(){
     }
 
     for (var i = 0; i < parks.length; i++) {
-      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('geo-value',parks[i][1]);
+      var parkCode = results[i]["parkCode"];
+      console.log(parkCode);
+      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]).data('value-parkName', parkCode);
       dpItem.text(parks[i][0]);
       dpItem.appendTo("#dm");
     }
