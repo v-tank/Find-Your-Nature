@@ -1,36 +1,25 @@
-var designation;
-var directionsInfo;
-var directionsUrl;
-var fullName;
-var id;
-var latLong;
-var name;
-var parkCode;
-var states;
-var url;
-var weatherInfo;
-
 var uluru;
 var parks =[];
 var state;
 var stateCode; 
-var doneBool = true;
+
+
+var initialLoad = true;
 
 $(document).ready(function(){
   // h3 animation
   setTimeout(function(){$("#in-out").attr("class", "animated lightSpeedOut");}, 2000);
-
-
   if (doneBool) {
     console.log("Ready");
     onPageLoad();
     doneBool = false;
   }
+  onPageLoad();
 });
-
 
 $('#state').on("change", function(event){ 
   event.preventDefault();
+
   $("a.dropdown-item").remove();
   parks=[];
   stateCode = $(this).val();
@@ -52,8 +41,9 @@ function getStateLatLng (location){
 }
 
 $(document).on("click", ".dropdown-item", function() {
-  mainMapInit([["",$(this).data("geo-value")]], "map", 10, [$(this).data("geo-value")]);
+  mainMapInit([["",$(this).data("value-geo")]], "map", 10, [$(this).data("value-geo")]);
   waqiMapInit();
+
 });
 
 
@@ -71,20 +61,40 @@ function mainMapInit(parks, div, zooom, center){
   var marker, i;
 
   for (i = 0; i < parks.length; i++) {  
-    marker = new google.maps.Marker({
-    position: new google.maps.LatLng(parks[i][1]),
-    map: map});
+
+  marker = new google.maps.Marker({
+  position: new google.maps.LatLng(parks[i][1]),
+  map: map, title: parks[i][0]});
+
   }
+
+  map.addListener('center_changed', function() {
+    window.setTimeout(function() {
+      map.panTo(marker.getPosition());
+    }, 3000);
+  });
+
+  marker.addListener('click', function() {
+    map.setZoom(8);
+    map.setCenter(marker.getPosition());
+  });
+
 } 
 
-
-
 function onPageLoad(){
+
+  $("#parks-indicators").empty();
+
+
   $.ajax({
     url: 'https://developer.nps.gov/api/v1/parks',
     dataType: 'json',
-    data: { stateCode : stateCode, api_key:'dR9liF6s3ztufwHduTKv4mfNqrtq3iGWp8dxjzcr' }
+    data: { 
+      stateCode : stateCode, 
+      fields: "images",
+      api_key:'dR9liF6s3ztufwHduTKv4mfNqrtq3iGWp8dxjzcr'}
   }).done(function(response) {
+    $("#parks-items").empty();
     console.log("Finished ajax call");
 
     waqiMapInit();
@@ -98,10 +108,35 @@ function onPageLoad(){
         uluru = getLatLngFromString(results[i].latLong);               
         parks.push([results[i].fullName, uluru]);
       }
+
+      var fullName = results[i]["fullName"];
+      var description = results[i]["description"];
+      var url = results[i]["url"];
+
+      if (results[i]["images"].length === 0) {
+        console.log("image and caption not available :( ");
+        imgCap = "Error";
+        imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
+      } else {
+        var imgSrc = results[i]["images"][0]["url"];
+        var imgCap = results[i]["images"][0]["altText"];
+      }
+
+      // doesn't create the first time when the page loads
+      if (initialLoad === false) {
+        createCards(fullName, description, imgSrc, imgCap, url);
+      }
+
+      // When we reach the end of the first loop, change the bool to false to create cards the next time around
+      if ((i+1) === results.length) {
+        initialLoad = false;
+      }
     }
 
     for (var i = 0; i < parks.length; i++) {
-      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('geo-value',parks[i][1]);
+      var parkCode = results[i]["parkCode"];
+      console.log(parkCode);
+      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]).data('value-parkName', parkCode);
       dpItem.text(parks[i][0]);
       dpItem.appendTo("#dm");
     }
@@ -114,22 +149,30 @@ function onPageLoad(){
   });
 }
 
+function createCards(fullName, description, imgSrc, imgCap, url) {
+  // var divToCreate = $('<div class="carousel-item"><img class="d-block w-100" src="'+imgSrc+'" alt="'+imgCap+'"><div class="carousel-caption d-none d-md-block"><h5>'+fullName+'</h5><p>'+description+'</p></div></div>');
+  var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+url+'" class="btn btn-primary">Go somewhere</a></div></div>');
+
+  $("#parks-items").append(divToCreate);
+
+}
+
 function getLatLngFromString(ll) {
   var newstr = ll.replace(/lat/, '"lat"').replace(/long/i, '"lng"');
   return JSON.parse("{"+newstr+"}"); 
 }
 
 function waqiMapInit(){
-  var  map  =  new  google.maps.Map(document.getElementById('map2'),  {  
-    center:  new  google.maps.LatLng( state),  
-    mapTypeId:  google.maps.MapTypeId.ROADMAP,  
-    zoom:  6  
+
+  var map = new google.maps.Map(document.getElementById('map2'),  {  
+    center: new google.maps.LatLng( state),  
+    mapTypeId: google.maps.MapTypeId.ROADMAP,  
+    zoom: 6  
   });  
   
-  var  t  =  new  Date().getTime();  
-  var  waqiMapOverlay  =  new  google.maps.ImageMapType({  
-      getTileUrl:  function(coord,  zoom)  {  
-      return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=_TOKEN_ID_"; },  name:  "Air  Quality",  
-  });  
+  var t = new Date().getTime();  
+  var waqiMapOverlay = new google.maps.ImageMapType({  
+      getTileUrl: function(coord,  zoom)  {  
+      return 'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=_TOKEN_ID_"; },  name:  "Air  Quality" });  
   map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
 }

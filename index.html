@@ -106,29 +106,35 @@
 	<div class="container text-center animated fadeIn">
 		<div class="row">
 			<div class="dropdown col-12">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    Select a Park
-			  </button>
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select a Park</button>
 			  <div class="dropdown-menu" id="dm" aria-labelledby="dropdownMenuButton">
 			  </div>
 			</div>
-		</div>	
-	<!-- Mini maps from Google map API -->
-	<div class="row">
-		<div id="map"  class="mainmap"></div>
-		<div id="map2" class="mainmap"></div>
-	</div>
-	<div id="parks" class="content">	
-	</div>
-			
-	<!-- jQuery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		</div>
+		<div class="row justify-content-center">
+			<div>
+				<div id="map"  class="mainmap"></div>
+				<div id="map2" class="mainmap"></div>
+			</div>
+		</div>
 
-	<!-- JS script -->
+		<div class="content">
+		  <div id="parks-items">
+		    
+		  </div>
+		</div>
+	</div>
+
+	<div class="contactForm footer">
+      <p style="color: #fff;">&copy; Find Your Nature. All Rights Reserved. </p>
+      <a href="contact.html" style="color: #fff; text-decoration: underline;">Contact us</a>
+  </div> 
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 	<script type="text/javascript" src="assets/js/app.js"></script>
-
-	<!-- Google map API -->
-	<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6xKYoQQwDTBwDKHhn5mnzt2tvwdCi9Ns"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6xKYoQQwDTBwDKHhn5mnzt2tvwdCi9Ns"></script>
 
 </body>
 </html>
