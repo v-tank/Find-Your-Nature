@@ -17,8 +17,6 @@ $('#state').on("change", function(event){
   parks=[];
   stateCode = $(this).val();
   state =  $("#state option:selected").data('geo');
-  statechangeclkcntr++;
-  console.log("statechangeclkcntr"+statechangeclkcntr)
   onPageLoad();
 });
 
