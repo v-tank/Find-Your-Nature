@@ -96,7 +96,6 @@ function onPageLoad(){
         parks.push([results[i].fullName, uluru]);
       }
 
-      // var listItem = $('<li data-target="#carouselExampleIndicators" data-slide-to="'+i+'"></li>');
 
       var fullName = results[i]["fullName"];
       var description = results[i]["description"];
@@ -120,7 +119,6 @@ function onPageLoad(){
       if ((i+1) === results.length) {
         initialLoad = false;
       }
-      // $("#parks-indicators").append(listItem);
     }
 
     for (var i = 0; i < parks.length; i++) {
