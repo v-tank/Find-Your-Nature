@@ -75,11 +75,9 @@ function mainMapInit(parks, div, zooom, center){
 } 
 
 function onPageLoad(){
-<<<<<<< HEAD
-=======
 
   $("#parks-indicators").empty();
->>>>>>> 9b3f50b76c629864908a8d138a8491c99a4511f0
+
 
   $.ajax({
     url: 'https://developer.nps.gov/api/v1/parks',
