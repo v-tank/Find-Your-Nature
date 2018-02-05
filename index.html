@@ -23,47 +23,9 @@
 
 	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 
-
-
-	  <style>
-      .map {
-
-        width: 300PX;
-        height: 400px;
-      }
-
-
-     .contdiv {
-        width: 310PX;
-        height: 410px;
-        background-color: grey;
-        margin: 5px;
-		float: left;
-		text-align: center;
-		color: white;
-
-      }
-
-
-
-       .mainmap {
-        width: 550PX;
-        height: 410px;
-        background-color: grey;
-        margin: 5px;
-		text-align: center;
-		color: black;
-		float: left;
-
-      }
-
-    </style>
-
-
-
-
 </head>
 <body>
+	<!-- <nav> -->
 	
 	<div class="hero-image">
 	  <div class="hero-text">
@@ -74,7 +36,7 @@
 	<br>
 
 	<div class='container-fluid' style="background-color: #3e3f48;">
-		<div class='row' style="height: 40px; padding: 5px 0;">
+		<div class='row' style="height: 50px; padding: 10px 0;">
 			<select name="state" id="state" style="margin: 0 auto;">
 			  <option value="" selected="selected">Select a State</option>
 				<option	data-geo = '{"lat":32.806671,"lng":-86.79113}'	value="AL">Alabama</option>
@@ -130,83 +92,43 @@
 				<option	data-geo = '{"lat":42.755966,"lng":-107.30249}'	value="WY">Wyoming</option>
 
 			</select>
-
-			<input type="submit" value="Submit" id="state-select">
-		</div>
-
-		<div class='row hiddenAtStart'>
-			<div class='col'>
-				<button>Home</button>
-			</div>
-			<div class='col'>
-				<button>Articles</button>
-			</div>
-			<div class='col'>
-				<button>Camp</button>
-			</div>
-			<div class='col'>
-				<button>Events</button>
-			</div>
-			<div class='col'>
-				<button>Parks</button>
-			</div>
-		</div>
-
-		<div class='row hiddenAtStart'>
-			<div class='col'>
-				<button>Near Me</button>
-			</div>
-			<div class='col'>
-				<input type="text" id="topic-input" placeholder="Search for a National Park">
-			</div>
-			<div class='col'>
-				<input type="submit" value="Submit" id="Search">
-			</div>
 		</div>
 	</div>
 	
 	<br>
 
 	<div class="container text-center">
-		<p>Dynamic content will go here</p>
-		<div id="parks" class="content">
-
-		</div>
-
 		<div class="row">
-			<div class="dropdown col-5">
-			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			    select park
-			  </button>
+			<div class="dropdown col-12">
+			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select a Park</button>
 			  <div class="dropdown-menu" id="dm" aria-labelledby="dropdownMenuButton">
 			  </div>
 			</div>
 		</div>
 
-		<div class="row">
-			<div id="map"  class="mainmap" col-5"></div>
-			<div id="map2" class="mainmap" col-5"></div>
+		<div class="row justify-content-center">
+			<div>
+				<div id="map"  class="mainmap"></div>
+				<div id="map2" class="mainmap"></div>
+			</div>
 		</div>
 
+		<div class="content">
+		  <div id="parks-items">
+		    
+		  </div>
+		</div>
+	</div>
 
+	<div class="contactForm footer">
+      <p style="color: #fff;">&copy; Find Your Nature. All Rights Reserved. </p>
+  </div> 
 
-
-	
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- Script -->
-  <script src="assets/js/app.js"></script>
-
-
-
-<div class="container">
-
-</div>
-
-
-
-	<script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6xKYoQQwDTBwDKHhn5mnzt2tvwdCi9Ns"></script>
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6xKYoQQwDTBwDKHhn5mnzt2tvwdCi9Ns"></script>
 
 </body>
 </html>
