@@ -7,13 +7,6 @@ var stateCode;
 var initialLoad = true;
 
 $(document).ready(function(){
-  // h3 animation
-  setTimeout(function(){$("#in-out").attr("class", "animated lightSpeedOut");}, 2000);
-  if (doneBool) {
-    console.log("Ready");
-    onPageLoad();
-    doneBool = false;
-  }
   onPageLoad();
 });
 
