@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Park Info</title>
+
+  <!-- Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+
+</head>
+<body>
+  
+  <div class="hero-image">
+    <div class="hero-text">
+      <h1>Find Your Nature</h1>
+    </div>
+  </div>
+  
+  <br>
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <h1 id="park-title">Yosemite</h1>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-5">
+        <img src="assets/images/main-bg.jpg" style="width: 100%;" />
+      </div>
+
+      <div class="col-7">
+        <h4>Alerts:</h4>
+        <ol id="alerts-div">
+          None
+        </ol>
+
+        <h4>Weather:</h4>
+        <p id="weather-div">OpenWeather API data will go here</p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <h4>Directions:</h4>
+        <p id="directions-div">Directions will go here</p>
+
+        <h4>Reviews:</h4>
+        <p id="reviews-div">Reviews data from Firebase will go here</p>
+      </div>
+    </div>
+
+
+  </div>
+    
+
+  <!--Footer -->
+  <div class="footer">
+    <div class="contactForm">
+      <p style="color: #fff;">&copy; Find Your Nature. All Rights Reserved. </p>
+    </div>
+  </div>      
+
+<!--form-->
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Script -->
+  <script src="assets/js/sharedPage.js"></script>
+
+
+</body>
+</html>
