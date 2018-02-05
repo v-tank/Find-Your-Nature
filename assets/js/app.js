@@ -1,19 +1,9 @@
-var designation;
-var directionsInfo;
-var directionsUrl;
-var fullName;
-var id;
-var latLong;
-var name;
-var parkCode;
-var states;
-var url;
-var weatherInfo;
-
 var uluru;
 var parks =[];
 var state;
 var stateCode; 
+
+
 var initialLoad = true;
 
 $(document).ready(function(){
@@ -22,10 +12,13 @@ $(document).ready(function(){
 
 $('#state').on("change", function(event){ 
   event.preventDefault();
+
   $("a.dropdown-item").remove();
   parks=[];
   stateCode = $(this).val();
   state =  $("#state option:selected").data('geo');
+  statechangeclkcntr++;
+  console.log("statechangeclkcntr"+statechangeclkcntr)
   onPageLoad();
 });
 
@@ -45,6 +38,7 @@ function getStateLatLng (location){
 $(document).on("click", ".dropdown-item", function() {
   mainMapInit([["",$(this).data("geo-value")]], "map", 10, [$(this).data("geo-value")]);
   waqiMapInit();
+
 });
 
 
@@ -62,15 +56,28 @@ function mainMapInit(parks, div, zooom, center){
   var marker, i;
 
   for (i = 0; i < parks.length; i++) {  
-    marker = new google.maps.Marker({
-    position: new google.maps.LatLng(parks[i][1]),
-    map: map});
+
+  marker = new google.maps.Marker({
+  position: new google.maps.LatLng(parks[i][1]),
+  map: map, title: parks[i][0]});
+
   }
+
+  map.addListener('center_changed', function() {
+    window.setTimeout(function() {
+      map.panTo(marker.getPosition());
+    }, 3000);
+  });
+
+  marker.addListener('click', function() {
+    map.setZoom(8);
+    map.setCenter(marker.getPosition());
+  });
+
 } 
 
-
-
 function onPageLoad(){
+
   $("#parks-indicators").empty();
 
   $.ajax({
@@ -140,6 +147,7 @@ function createCards(fullName, description, imgSrc, imgCap, url) {
   var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+url+'" class="btn btn-primary">Go somewhere</a></div></div>');
 
   $("#parks-items").append(divToCreate);
+
 }
 
 function getLatLngFromString(ll) {
@@ -148,6 +156,7 @@ function getLatLngFromString(ll) {
 }
 
 function waqiMapInit(){
+
   var map = new google.maps.Map(document.getElementById('map2'),  {  
     center: new google.maps.LatLng( state),  
     mapTypeId: google.maps.MapTypeId.ROADMAP,  
