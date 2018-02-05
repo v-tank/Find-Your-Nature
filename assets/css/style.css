@@ -1,6 +1,9 @@
 body, html {
-    height: 100%;
-    margin: 0;
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #6B6B6B;
+  /*text-shadow: 1px 1px #EFEFEF;*/
 }
 
 .hero-image {
@@ -120,12 +123,6 @@ input[type=submit]:hover {
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: #6B6B6B;
-  text-shadow: 1px 1px #EFEFEF;
-}
-
 .meet-the-team {
   margin-bottom: 100px;
 }
@@ -135,8 +132,7 @@ body {
   text-align: center;
   position: relative;
   margin: 55px 0;
-  color: #F3F3F3;
-  text-shadow: 4px 3px 3px #676767;
+  color: #666;
 }
 
 .title:after {
@@ -173,10 +169,6 @@ body {
   display: inline;
   margin: 20px 15px;
   
-}
-
-.image-holder {
-  float: left;
 }
 
 .image-holder img {
@@ -232,16 +224,16 @@ body {
 .shadow {
   height: 20px;
   width: 200px;
-  background-color: rgba(255,255,255,0);
+  background-color: rgba(255,255,255,0);/*
   -webkit-box-shadow: 20px 215px 150px 20px rgba(0,0,0,0.54);
-  -moz-box-shadow: 20px 215px 150px 20px rgba(0,0,0,0.54);
-  box-shadow: 20px 215px 175px 30px rgba(0,0,0,0.75);
+  -moz-box-shadow: 20px 215px 150px 20px rgba(0,0,0,0.54);*/
+  box-shadow: 0px 215px 175px 10px rgba(0,0,0,0.75);
 }
 
 /** Footer **/
 .contactForm {
 	background: #333333;
-	color: #ffffff;
+	color: #333;
 	text-align: center;
 	padding: 50px;
 	margin-top: 100px;
@@ -263,18 +255,24 @@ body {
 	border: none;
 	border-bottom: 1px solid #7D8186;
 	border-top: 1px solid #7D8186;
-	color: white;
+	color: #333;
 	font-size: 18px;
 	text-align: left;
 	width: 50%;
 	border-radius: 10px;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  text-align: center;
+}
+
+input[type=text] {
+  width: 50%;
+}
+
 .contactForm button {
-	background-color: #e6e6e6;
+	background-color: rgba(255, 183, 0, 1);
 	color: #333333; 
-	font-weight: bold;
-	font-size: 14px;
 	text-align: center;
 	border-radius: 10px;
 	padding: 15px;
@@ -285,6 +283,8 @@ body {
 
 .contactForm button:hover {
 	background-color: #fff; 
-	color: #0B1016;
-	cursor: pointer;
+}
+
+.footer {
+  margin-top: 20px;
 }
