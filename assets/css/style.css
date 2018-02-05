@@ -42,6 +42,11 @@ body, html {
 	padding: 0 0.5px;
 }
 
+.card {
+	display: inline-table;
+	margin: 10px;
+}
+
 /* Set the button properties */
 button {
 	text-align: center;
@@ -81,13 +86,7 @@ input[type=submit]:hover {
 	background-color: #fbc365;
 }
 
-.map {
-	width: 300PX;
-	height: 400px;
-}
-
-
-.contdiv {
+/*.contdiv {
   width: 310px;
   height: 410px;
   background-color: grey;
@@ -96,16 +95,11 @@ input[type=submit]:hover {
 	text-align: center;
 	color: white;
 }
-
+*/
 .mainmap {
-	width: 550PX;
-	height: 410px;
-	background-color: grey;
-	margin: 5px;
-  margin-left: 13px;
-  margin-right: 0px;
-	text-align: center;
-	color: black;
+	width: 500px;
+	height: 400px;
+	margin: 10px;
 	float: left;
 }
 
