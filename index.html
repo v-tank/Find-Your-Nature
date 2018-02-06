@@ -21,19 +21,29 @@
 	<!-- momentJS -->
   	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
+  	<!-- Favivon -->
+	<link rel="icon" type="image/png" href="assets/images/tree.png">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+	<!-- Google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto" rel="stylesheet">
+
 </head>
 <body>
 	<!-- <nav> -->
 	
-	<div class="hero-image">
+	<div class="hero-image animated fadeIn">
 	  <div class="hero-text">
 	    <h1>Find Your Nature</h1>
+	    <h3 id="in-out">Adventure is out there!</h3>
 	  </div>
 	</div>
-	
-	<br>
 
 	<div class='container-fluid' style="background-color: #3e3f48;">
+		<p class="text-center mb-0 pt-2 text-white">Start Your Adventure Here!</p>
+
 		<div class='row' style="height: 60px; padding: 10px 0;">
 			<select name="state" id="state" style="margin: 0 auto;" class="btn btn-primary dropdown-toggle">
 			  <option value="" selected="selected">Select a State</option>
@@ -106,7 +116,11 @@
 
 		<div class="row justify-content-center">
 			<div>
+				<h5>Attraction Map</h5>
 				<div id="map"  class="mainmap"></div>
+			</div>
+			<div>
+				<h5>Air Quality Map</h5>
 				<div id="map2" class="mainmap"></div>
 			</div>
 		</div>
