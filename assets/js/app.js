@@ -108,10 +108,10 @@ function onPageLoad(){
         imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
       } else {
         var imageArrayLength = results[i]["images"].length;
-        console.log("Image array length is " + imageArrayLength);
+        // console.log("Image array length is " + imageArrayLength);
         var randImg = getRandomInt(0, imageArrayLength);
-        console.log("Random image int is: " + randImg);
-        console.log("=================");
+        // console.log("Random image int is: " + randImg);
+        // console.log("=================");
         var imgSrc = results[i]["images"][parseInt(randImg)]["url"];
         var imgCap = results[i]["images"][0]["altText"];
       }
@@ -172,10 +172,10 @@ function waqiMapInit(){
 }
 
 function getRandomInt(min, max) {
-  console.log("min is " + min + " and max is " + max);
+  // console.log("min is " + min + " and max is " + max);
   return Math.random() * (max - min) + min;
 }
 
 $(document).on("click", ".park", function() {
-  console.log($(this).attr("value"));
+  // console.log($(this).attr("value"));
 });
