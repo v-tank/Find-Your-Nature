@@ -49,40 +49,26 @@
     <div class="row">
       <div class="col-5" id="main-image">
         <!-- <img src="assets/images/main-bg.jpg" style="width: 100%;" /> -->
-      </div>
-
-      <div class="col-7">
-        <h4>Alerts:</h4>
-        <ol id="alerts-div">
-          None
-        </ol>
-
-        <div id="weather-div">
-          
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-12">
-        <h4>Directions:</h4>
-        <p id="directions-div">Directions will go here</p>
-
+        <br>
+        <br>
         <h4>Reviews:</h4>
         
         <!-- Button triggers modal -->
-        <button id="add-review" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add a Review!</button>
+        <button id="add-review" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="width: 26%;">Add a Review!</button>
         
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
+
             <div class="modal-content">
+
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
                 <button type="button" class="close w-25" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
               <div class="modal-body">
                 <form>
                   <div class="form-group">
@@ -95,22 +81,45 @@
                   </div>
                 </form>
               </div>
+
               <div class="modal-footer">
-              <button id="review-submit" type="submit" class="btn btn-success">Submit</button>
-              </div>
+              <button id="review-submit" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
+              </div> 
             </div>
           </div>
         </div>
 
 
-        <div class="sharethis-inline-share-buttons"></div>
-        
         <br>
         
         <div id="reviews-div">
           
         </div>
+      </div>
 
+      <div class="col-7">
+
+        <div id="weather-div">
+          
+        </div>
+
+        <h4>Directions:</h4>
+        <p id="directions-div">Directions will go here</p>
+
+        <h4>Alerts:</h4>
+        <ol id="alerts-div">
+          None
+        </ol>
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+
+
+        <div class="sharethis-inline-share-buttons"></div>
+        
       </div>
     </div>
 

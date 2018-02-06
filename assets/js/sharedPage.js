@@ -98,7 +98,7 @@ function onPageLoad(){
     $("#weather-div").append(weatherDiv);
     $("#park-title").html('<a href="'+link+'" target="_blank">' + title + '</a>');
     $("#directions-div").text(directions);
-    $("#main-image").append(imgDiv);
+    $("#main-image").prepend(imgDiv);
   });
 }
 
