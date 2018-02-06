@@ -8,13 +8,13 @@ var initialLoad = true;
 $(document).ready(function(){
   // h3 animation
   setTimeout(function(){$("#in-out").attr("class", "animated tada");}, 1000);
-
+  $("#dropdownMenuButton").addClass('hiddenAtStart');
   onPageLoad();
 });
 
 $('#state').on("change", function(event){ 
   event.preventDefault();
-
+  $("#dropdownMenuButton").removeClass('hiddenAtStart');
   $("a.dropdown-item").remove();
   parks=[];
   stateCode = $(this).val();
@@ -39,9 +39,10 @@ $(document).on("click", ".dropdown-item", function() {
 
   var parkGeo = $(this).data("value-geo");
   mainMapInit([["",parkGeo]], "map", 10, [parkGeo]);
- $( ".card" ).show();
- $( ".card" ).not( "#card_"+$(this).data("value-parkCode")).hide();
+  $( ".card" ).show();
+  $( ".card" ).not( "#card_"+$(this).data("value-parkCode")).hide();
   waqiMapInit([parkGeo]);
+
 });
 
 function mainMapInit(parks, div, zooom, center){
