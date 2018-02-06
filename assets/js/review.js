@@ -40,6 +40,7 @@ $(document).ready(function(){
 
 		$("#review-name").val("");
 		$("#review-message").val("");
+		$("#exampleModalCenter").hide();
 	});
 
 	// Dynamically appends reviews
