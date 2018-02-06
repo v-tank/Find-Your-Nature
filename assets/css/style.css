@@ -32,6 +32,11 @@ body, html {
 	font-family: cursive;
   font-size: 60px;
 }
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
 
 .custom {
 	margin: 0 40px;
