@@ -37,7 +37,7 @@
 
 	<div class='container-fluid' style="background-color: #3e3f48;">
 		<div class='row' style="height: 50px; padding: 10px 0;">
-			<select name="state" id="state" style="margin: 0 auto;">
+			<select name="state" id="state" style="margin: 0 auto; width: 200px" class="btn dropdown-toggle">
 			  <option value="" selected="selected">Select a State</option>
 				<option	data-geo = '{"lat":32.806671,"lng":-86.79113}'	value="AL">Alabama</option>
 				<option	data-geo = '{"lat":61.370716,"lng":-152.404419}'	value="AK">Alaska</option>
@@ -99,9 +99,9 @@
 
 	<div class="container text-center">
 		<div class="row">
-			<div class="dropdown col-6 mx-auto">
+			<div class="dropdown col-3 mx-auto">
 			  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select a Park</button>
-			  <div class="dropdown-menu dropdown-menu-right" id="dm" aria-labelledby="dropdownMenuButton">
+			  <div class="dropdown-menu scrollable-menu" id="dm" aria-labelledby="dropdownMenuButton">
 			  </div>
 			</div>
 		</div>
