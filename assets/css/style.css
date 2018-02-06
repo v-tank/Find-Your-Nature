@@ -285,6 +285,12 @@ input[type=text] {
 	background-color: #fff; 
 }
 
+#add-review {
+  width: 10%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .footer {
   margin-top: 20px;
 }

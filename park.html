@@ -21,8 +21,11 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+  
+  <!-- momentJS -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
   <a href="index.html">
@@ -63,10 +66,42 @@
         <p id="directions-div">Directions will go here</p>
 
         <h4>Reviews:</h4>
-        <p id="reviews-div">Reviews data from Firebase will go here</p>
+        
+        <!-- Button triggers modal -->
+        <button id="add-review" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add a Review!</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                <button type="button" class="close w-25" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="review-name">Name:</label>
+                    <input type="name" class="form-control" id="review-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="review-message">Review:</label>
+                    <textarea class="form-control" id="review-message" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+              <button id="review-submit" type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p id="reviews-div"></p>
+
       </div>
     </div>
-
 
   </div>
     
@@ -84,6 +119,9 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  <!-- Script for Review -->
+  <script type="text/javascript" src="assets/js/review.js"></script>
+  
   <!-- Script -->
   <script src="assets/js/sharedPage.js"></script>
 
