@@ -34,6 +34,8 @@ function getStateLatLng (location){
 }
 
 $(document).on("click", ".dropdown-item", function() {
+
+
   mainMapInit([["",$(this).data("value-geo")]], "map", 10, [$(this).data("value-geo")]);
   waqiMapInit();
 
@@ -129,7 +131,10 @@ function onPageLoad(){
     for (var i = 0; i < parks.length; i++) {
       var parkCode = results[i]["parkCode"];
       console.log(parkCode);
-      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]).data('value-parkName', parkCode);
+      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]);//.data('value-parkName', parkCode);
+      dpItem.attr('value-parkName', parkCode);
+
+
       dpItem.text(parks[i][0]);
       dpItem.appendTo("#dm");
     }
@@ -157,12 +162,25 @@ function getLatLngFromString(ll) {
 
 function waqiMapInit(){
 
-  var map = new google.maps.Map(document.getElementById('map2'),  {  
-    center: new google.maps.LatLng( state),  
+  var centerwaqi;
+  var zoomwaqi;
+  if (state) {
+   centerwaqi= new google.maps.LatLng(state);
+   zoomwaqi= 6;
+
+  } else {
+
+  centerwaqi = new google.maps.LatLng(39.5,-98.35);
+  zoomwaqi= 3;
+
+  }
+
+  var map = new google.maps.Map(document.getElementById('map2'),  { 
+    center: centerwaqi, 
     mapTypeId: google.maps.MapTypeId.ROADMAP,  
-    zoom: 6  
+    zoom: zoomwaqi  
   });  
-  
+
   var t = new Date().getTime();  
   var waqiMapOverlay = new google.maps.ImageMapType({  
       getTileUrl: function(coord,  zoom)  {  
