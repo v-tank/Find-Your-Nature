@@ -52,6 +52,7 @@ $(document).ready(function(){
 		var reviewDate = moment(childSnapshot.val().date).format("MMM Do YYYY, h:mm:ss a");
 		var starRating = childSnapshot.val().rating;
 
+
 		var housingDiv = $('<div class="row">');
 		var colDiv = $("<div class='col-12'>");
 
@@ -67,6 +68,7 @@ $(document).ready(function(){
 		housingDiv.append(colDiv);
 
 		$("#reviews-div").prepend(housingDiv);
+
 
 		// $("#reviews-div").append("<br><p class='border border-dark rounded w-50'><strong>Name:</strong> " + reviewName + "<br><strong>Date Posted:</strong> " + reviewDate + "<br>" + reviewMessage + "</p>");
 	}, function(errorObject){
