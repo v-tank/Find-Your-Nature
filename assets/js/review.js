@@ -48,7 +48,7 @@ $(document).ready(function(){
 		var reviewMessage = childSnapshot.val().review;
 		var reviewDate = moment(childSnapshot.val().date).format("MMM Do YYYY, h:mm:ss a");
 
-		$("#reviews-div").append('<br><div class="row justify-content-center"><div class="col-8"><div class="row"><strong>'+reviewName+'</strong></div><div class="row"><p style="color: #999;" class="mb-2">'+reviewDate+'</p></div><div class="row"><p>'+reviewMessage+'</p></div></div></div>');
+		$("#reviews-div").append('<br><div class="row"><div class="col-8"><div><strong>'+reviewName+'</strong></div><div><p style="color: #999;" class="mb-2">'+reviewDate+'</p></div><div><p>'+reviewMessage+'</p></div></div></div>');
 
 		// $("#reviews-div").append("<br><p class='border border-dark rounded w-50'><strong>Name:</strong> " + reviewName + "<br><strong>Date Posted:</strong> " + reviewDate + "<br>" + reviewMessage + "</p>");
 	}, function(errorObject){
