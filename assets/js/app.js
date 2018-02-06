@@ -112,8 +112,8 @@ function onPageLoad(){
         var randImg = getRandomInt(0, imageArrayLength);
         // console.log("Random image int is: " + randImg);
         // console.log("=================");
-        var imgSrc = results[i]["images"][parseInt(randImg)]["url"];
-        var imgCap = results[i]["images"][0]["altText"];
+        var imgSrc = results[i]["images"][randImg]["url"];
+        var imgCap = results[i]["images"][randImg]["altText"];
       }
 
       // doesn't create the first time when the page loads
