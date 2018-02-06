@@ -26,6 +26,9 @@
   
   <!-- momentJS -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  
+  <!-- Font Awesome -->
+  <script src="https://use.fontawesome.com/5fafc269f6.js"></script>
 
   <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5a7961536507d000137b591e&product=inline-share-buttons' async='async'></script>
 </head>
@@ -76,6 +79,31 @@
                     <input type="name" class="form-control" id="review-name">
                   </div>
                   <div class="form-group">
+                    <label for="stars">Rating:</label>
+                    <div id="rating">
+                      <input id="star-5" type="radio" name="rating" value="5">
+                      <label for="star-5" title="5 stars">
+                          <i class="active fa fa-star" aria-hidden="true"></i>
+                      </label>
+                      <input id="star-4" type="radio" name="rating" value="4">
+                      <label for="star-4" title="4 stars">
+                          <i class="active fa fa-star" aria-hidden="true"></i>
+                      </label>
+                      <input id="star-3" type="radio" name="rating" value="3">
+                      <label for="star-3" title="3 stars">
+                          <i class="active fa fa-star" aria-hidden="true"></i>
+                      </label>
+                      <input id="star-2" type="radio" name="rating" value="2">
+                      <label for="star-2" title="2 stars">
+                          <i class="active fa fa-star" aria-hidden="true"></i>
+                      </label>
+                      <input id="star-1" type="radio" name="rating" value="1">
+                      <label for="star-1" title="1 star">
+                          <i class="active fa fa-star" aria-hidden="true"></i>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="review-message">Review:</label>
                     <textarea class="form-control" id="review-message" rows="3"></textarea>
                   </div>
@@ -91,7 +119,7 @@
 
 
         <br>
-        
+
         <div id="reviews-div">
           
         </div>
