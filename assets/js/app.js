@@ -33,8 +33,12 @@ function getStateLatLng (location){
 }
 
 $(document).on("click", ".dropdown-item", function() {
-  mainMapInit([["",$(this).data("value-geo")]], "map", 10, [$(this).data("value-geo")]);
-  waqiMapInit();
+
+  var parkGeo = $(this).data("value-geo");
+  mainMapInit([["",parkGeo]], "map", 10, [parkGeo]);
+ $( ".card" ).show();
+ $( ".card" ).not( "#card_"+$(this).data("value-parkCode")).hide();
+  waqiMapInit([parkGeo]);
 });
 
 function mainMapInit(parks, div, zooom, center){
@@ -91,7 +95,7 @@ function onPageLoad(){
       // console.log("name : "+i+""+ results[i].name) ;
       if (results[i].latLong.length > 0) {
         uluru = getLatLngFromString(results[i].latLong);               
-        parks.push([results[i].fullName, uluru]);
+        parks.push([results[i].fullName, uluru, results[i]["parkCode"]]);
       }
 
       var fullName = results[i]["fullName"];
@@ -122,8 +126,8 @@ function onPageLoad(){
     }
 
     for (var i = 0; i < parks.length; i++) {
-      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]);
-
+      var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]).data('value-parkCode', parks[i][2]);
+      //debugger;
       dpItem.text(parks[i][0]);
       dpItem.appendTo("#dm");
     }
@@ -140,7 +144,7 @@ function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
   
   var newPath = "park.html?parkCode=" + parkCode;
   var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
-
+  divToCreate.attr('id', "card_"+parkCode);
   $("#parks-items").append(divToCreate);
 
 }
@@ -150,11 +154,16 @@ function getLatLngFromString(ll) {
   return JSON.parse("{"+newstr+"}"); 
 }
 
-function waqiMapInit(){
+function waqiMapInit(center){
 
   var centerwaqi;
   var zoomwaqi;
-  if (state) {
+
+  if (center){
+    centerwaqi= new google.maps.LatLng(center[0]);
+    zoomwaqi= 10;
+  }
+  else if (state) {
    centerwaqi= new google.maps.LatLng(state);
    zoomwaqi= 6;
 
@@ -164,6 +173,8 @@ function waqiMapInit(){
   zoomwaqi= 3;
 
   }
+   console.log("center "+center);
+  console.log("centerwaqi" +centerwaqi);
 
   var map = new google.maps.Map(document.getElementById('map2'),  { 
     center: centerwaqi, 
