@@ -71,9 +71,6 @@ function mainMapInit(parks, div, zooom, center){
 
 function onPageLoad(){
 
-  $("#parks-indicators").empty();
-
-
   $.ajax({
     url: 'https://developer.nps.gov/api/v1/parks',
     dataType: 'json',
@@ -108,10 +105,7 @@ function onPageLoad(){
         imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
       } else {
         var imageArrayLength = results[i]["images"].length;
-        // console.log("Image array length is " + imageArrayLength);
         var randImg = getRandomInt(0, imageArrayLength);
-        console.log("Random image int is: " + randImg);
-        // console.log("=================");
         var imgSrc = results[i]["images"][parseInt(randImg)]["url"];
         var imgCap = results[i]["images"][parseInt(randImg)]["altText"];
       }
@@ -128,8 +122,8 @@ function onPageLoad(){
     }
 
     for (var i = 0; i < parks.length; i++) {
-      // console.log(parkCode);
       var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]);
+
       dpItem.text(parks[i][0]);
       dpItem.appendTo("#dm");
     }
@@ -143,7 +137,7 @@ function onPageLoad(){
 }
 
 function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
-  // var divToCreate = $('<div class="carousel-item"><img class="d-block w-100" src="'+imgSrc+'" alt="'+imgCap+'"><div class="carousel-caption d-none d-md-block"><h5>'+fullName+'</h5><p>'+description+'</p></div></div>');
+  
   var newPath = "park.html?parkCode=" + parkCode;
   var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
 
@@ -172,7 +166,6 @@ function waqiMapInit(){
 }
 
 function getRandomInt(min, max) {
-  // console.log("min is " + min + " and max is " + max);
   return Math.random() * (max - min) + min;
 }
 
