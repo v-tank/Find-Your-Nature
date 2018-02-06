@@ -1,7 +1,9 @@
 body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Roboto', sans-serif !important;
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #6B6B6B;
+  /*text-shadow: 1px 1px #EFEFEF;*/
 }
 
 .hero-image {
@@ -27,13 +29,18 @@ body, html {
 }
 
 .hero-text > h1 {
-  font-size: 65px;
-  width: 15em;
+  font-size: 60px;
 }
 
 h1, h3 {
   font-family: 'Rammetto One', cursive !important;
-  letter-spacing: 5px;
+/*  letter-spacing: 5px;*/
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 400px;
+  overflow-x: hidden;
 }
 
 .custom {
@@ -286,6 +293,12 @@ input[type=text] {
 
 .contactForm button:hover {
 	background-color: #fff; 
+}
+
+#add-review {
+  width: 10%;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .footer {

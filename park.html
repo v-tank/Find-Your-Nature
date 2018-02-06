@@ -21,28 +21,44 @@
 
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+  
+  <!-- momentJS -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
+  <!-- Favivon -->
+  <link rel="icon" type="image/png" href="assets/images/tree.png">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto" rel="stylesheet">
+
+  <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5a7961536507d000137b591e&product=inline-share-buttons' async='async'></script>
 </head>
 <body>
-  
-  <div class="hero-image">
-    <div class="hero-text">
-      <h1>Find Your Nature</h1>
+  <a href="index.html">
+    <div class="hero-image animated fadeIn">
+      <div class="hero-text animated fadeIn">
+        <h1>Find Your Nature</h1>
+        <h3 id="in-out">Adventure is out there!</h3>
+      </div>
     </div>
-  </div>
+  </a>
   
   <br>
 
   <div class="container">
 
     <div class="row justify-content-center">
-      <h1 id="park-title">Yosemite</h1>
+      <h1 id="park-title"></h1>
     </div>
     <br>
     <div class="row">
-      <div class="col-5">
-        <img src="assets/images/main-bg.jpg" style="width: 100%;" />
+      <div class="col-5" id="main-image">
+        <!-- <img src="assets/images/main-bg.jpg" style="width: 100%;" /> -->
       </div>
 
       <div class="col-7">
@@ -62,10 +78,49 @@
         <p id="directions-div">Directions will go here</p>
 
         <h4>Reviews:</h4>
-        <p id="reviews-div">Reviews data from Firebase will go here</p>
+        
+        <!-- Button triggers modal -->
+        <button id="add-review" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add a Review!</button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Review</h5>
+                <button type="button" class="close w-25" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="review-name">Name:</label>
+                    <input type="name" class="form-control" id="review-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="review-message">Review:</label>
+                    <textarea class="form-control" id="review-message" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+              <button id="review-submit" type="submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="sharethis-inline-share-buttons"></div>
+        
+        <br>
+        <div id="reviews-div">
+          
+        </div>
+
       </div>
     </div>
-
 
   </div>
     
@@ -74,6 +129,7 @@
   <div class="footer">
     <div class="contactForm">
       <p style="color: #fff;">&copy; Find Your Nature. All Rights Reserved. </p>
+      <a href="contact.html" style="color: #fff; text-decoration: underline;">Contact Us</a>
     </div>
   </div>      
 
@@ -82,6 +138,9 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+  <!-- Script for Review -->
+  <script type="text/javascript" src="assets/js/review.js"></script>
+  
   <!-- Script -->
   <script src="assets/js/sharedPage.js"></script>
 
