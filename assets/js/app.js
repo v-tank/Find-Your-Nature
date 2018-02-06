@@ -152,10 +152,23 @@ function getLatLngFromString(ll) {
 
 function waqiMapInit(){
 
-  var map = new google.maps.Map(document.getElementById('map2'),  {  
-    center: new google.maps.LatLng( state),  
+  var centerwaqi;
+  var zoomwaqi;
+  if (state) {
+   centerwaqi= new google.maps.LatLng(state);
+   zoomwaqi= 6;
+
+  } else {
+
+  centerwaqi = new google.maps.LatLng(39.5,-98.35);
+  zoomwaqi= 3;
+
+  }
+
+  var map = new google.maps.Map(document.getElementById('map2'),  { 
+    center: centerwaqi, 
     mapTypeId: google.maps.MapTypeId.ROADMAP,  
-    zoom: 6  
+    zoom: zoomwaqi  
   });  
   
   var t = new Date().getTime();  
