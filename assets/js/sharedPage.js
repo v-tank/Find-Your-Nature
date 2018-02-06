@@ -79,6 +79,9 @@ function onPageLoad(){
     var title = dataResults[0]["fullName"];
     var directions = dataResults[0]["directionsInfo"];
     var link = dataResults[0]["url"];
+    var latLong = getLatLngFromString(dataResults[0]["latLong"]);
+    var lat = JSON.stringify(latLong.lat);
+    var long = JSON.stringify(latLong.lng);
 
     if (dataResults[0]["images"].length === 0) {
       imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
@@ -88,8 +91,11 @@ function onPageLoad(){
       var imgSrc = dataResults[0]["images"][parseInt(randImg)]["url"];
     }
 
+    var weatherDiv = $('<iframe id="forecast_embed" type="text/html" frameborder="0" height="245" width="100%" src="https://forecast.io/embed/#lat='+(lat)+'&lon='+(long)+'&name='+title+'"></iframe>');
+
     var imgDiv = $('<img src="'+imgSrc+'" style="width: 100%;" />');
 
+    $("#weather-div").append(weatherDiv);
     $("#park-title").html('<a href="'+link+'" target="_blank">' + title + '</a>');
     $("#directions-div").text(directions);
     $("#main-image").append(imgDiv);
@@ -98,5 +104,10 @@ function onPageLoad(){
 
 function getRandomInt(min, max) {
   return Math.random() * (max - min) + min;
+}
+
+function getLatLngFromString(ll) {
+  var newstr = ll.replace(/lat/, '"lat"').replace(/long/i, '"lng"');
+  return JSON.parse("{"+newstr+"}"); 
 }
 
