@@ -83,7 +83,11 @@ function onPageLoad(){
     
     var title = dataResults[0]["fullName"];
     var directions = dataResults[0]["directionsInfo"];
-    var imgSrc = dataResults[0]["images"][0]["url"];
+    if (dataResults[0]["images"].length === 0) {
+      imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
+    } else {
+      var imgSrc = dataResults[0]["images"][0]["url"];
+    }
 
     var imgDiv = $('<img src="'+imgSrc+'" style="width: 100%;" />');
 
