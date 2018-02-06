@@ -3,6 +3,7 @@ body, html {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #6B6B6B;
+
   /*text-shadow: 1px 1px #EFEFEF;*/
 }
 
@@ -303,3 +304,31 @@ input[type=text] {
 .footer {
   margin-top: 20px;
 }
+
+
+#rating {
+  direction: rtl;
+  display: block;
+}
+
+#rating input[type=radio] {
+    display: none
+}
+
+#rating label {
+    color: #bbb;
+    font-size: 18px;
+    padding: 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out
+}
+
+#rating label:hover {
+  color: #f2b600;
+}
+
+#rating label:hover ~ label,
+#rating input[type=radio]:checked ~ label {
+    color: #f2b600
+}
+

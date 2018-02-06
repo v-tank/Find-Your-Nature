@@ -25,6 +25,7 @@ $(document).ready(function(){
 		var reviewName = $("#review-name").val().trim();
 		var reviewMessage = $("#review-message").val().trim();
 		var reviewDate = Date.now();
+		var starRating = $("input[name='rating']:checked").val();
 		// console.log(reviewName);
 		// console.log(reviewMessage);
 		// debugger;
@@ -32,12 +33,14 @@ $(document).ready(function(){
 		var newReview = {
 			name: reviewName,
 			date: reviewDate,
-			review: reviewMessage
+			review: reviewMessage,
+			rating: starRating
 		};
 		database.ref("/" + parkName).push(newReview);
 
 		console.log("Review added!");
 
+		// CLOSE MODAL UPON SUBMIT!
 		$("#review-name").val("");
 		$("#review-message").val("");
 	});
@@ -47,8 +50,25 @@ $(document).ready(function(){
 		var reviewName = childSnapshot.val().name;
 		var reviewMessage = childSnapshot.val().review;
 		var reviewDate = moment(childSnapshot.val().date).format("MMM Do YYYY, h:mm:ss a");
+		var starRating = childSnapshot.val().rating;
 
-		$("#reviews-div").append('<br><div class="row"><div class="col-8"><div><strong>'+reviewName+'</strong></div><div><p style="color: #999;" class="mb-2">'+reviewDate+'</p></div><div><p>'+reviewMessage+'</p></div></div></div>');
+
+		var housingDiv = $('<div class="row">');
+		var colDiv = $("<div class='col-12'>");
+
+		var stars = $("<div>");
+		for (var i = 1; i <= starRating; i++){
+			stars.append('<i class="active fa fa-star" aria-hidden="true"></i>');
+		}
+
+		colDiv.append(stars);
+		colDiv.append('<div><strong>'+reviewName+'</strong></div>');
+		colDiv.append('<div><p style="color: #999;" class="mb-2">'+reviewDate+'</p></div>');
+		colDiv.append('<p>'+reviewMessage+'</p></div><br>');
+		housingDiv.append(colDiv);
+
+		$("#reviews-div").prepend(housingDiv);
+
 
 		// $("#reviews-div").append("<br><p class='border border-dark rounded w-50'><strong>Name:</strong> " + reviewName + "<br><strong>Date Posted:</strong> " + reviewDate + "<br>" + reviewMessage + "</p>");
 	}, function(errorObject){
