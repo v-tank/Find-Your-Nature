@@ -1,3 +1,9 @@
+$(document).ready(function(){
+  // h3 animation
+  setTimeout(function(){$("#in-out").attr("class", "animated tada");}, 1000);
+
+  onPageLoad();
+});
 
 $("#contactSub").on("click", function(event) {
 	event.preventDefault();
