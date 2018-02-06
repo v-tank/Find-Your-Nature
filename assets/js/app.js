@@ -6,6 +6,9 @@ var stateCode;
 var initialLoad = true;
 
 $(document).ready(function(){
+  // h3 animation
+  setTimeout(function(){$("#in-out").attr("class", "animated lightSpeedOut");}, 3000);
+
   onPageLoad();
 });
 

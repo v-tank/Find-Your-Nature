@@ -19,16 +19,26 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
+  <!-- Favivon -->
+  <link rel="icon" type="image/png" href="assets/images/tree.png">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Rammetto+One|Roboto" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 
 </head>
 <body>
   <a href="index.html">
-    <div class="hero-image">
+    <div class="hero-image animated fadeIn h-50">
       <div class="hero-text">
         <h1>Find Your Nature</h1>
+        <h3 id="in-out">Adventure is out there!</h3>
       </div>
     </div>
   </a>
@@ -36,14 +46,14 @@
 
   <div class="container">
 
-    <h1 class="title">Meet Our Team</h1>
+    <h1 class="title animated fadeIn">Meet Our Team</h1>
     <div class="row">
 
       <div class="col-6">
         <div class="row align-items-center justify-content-center">
           <div class="col-5 p-0">
             <div class="image-holder text-center ">
-              <a href="https://github.com/v-tank"><img src="assets/images/vaibhav.png"></a>
+              <a href="https://github.com/v-tank"><img class="animated fadeIn" src="assets/images/vaibhav.png"></a>
               <p class="team-name">Vaibhav Tank</p>
               <p class="team-job">#</p>
             </div>
@@ -55,7 +65,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-5 p-0">
             <div class="image-holder text-center">
-              <a href="https://github.com/fvaldez421"><img src="assets/images/frank.jpg"></a>
+              <a href="https://github.com/fvaldez421"><img class="animated fadeIn" src="assets/images/frank.jpg"></a>
               <p class="team-name">Frank Valdez</p>
               <p class="team-job">#</p>
             </div>
@@ -71,7 +81,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-5 p-0">
             <div class="image-holder text-center">
-              <a href="https://github.com/Trantastic"><img src="assets/images/yvette.jpg"></a>
+              <a href="https://github.com/Trantastic"><img class="animated fadeIn" src="assets/images/yvette.jpg"></a>
               <p class="team-name">Yvette Tran</p>
               <p class="team-job">#</p>
             </div>
@@ -83,7 +93,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-5 p-0">
             <div class="image-holder text-center">
-              <a href="https://github.com/julienguyen86"><img src="assets/images/julie.jpg"></a>
+              <a href="https://github.com/julienguyen86"><img class="animated fadeIn" src="assets/images/julie.jpg"></a>
               <p class="team-name">Julie Nguyen</p>
               <p class="team-job">#</p>
             </div>
@@ -99,7 +109,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-5 p-0">
             <div class="image-holder text-center">
-              <a href="https://github.com/tikhonoff"><img src="assets/images/konstantin.png"></a>
+              <a href="https://github.com/tikhonoff"><img class="animated fadeIn" src="assets/images/konstantin.png"></a>
               <p class="team-name">Konstantin Tikhonov</p>
               <p class="team-job">#</p>
             </div>
@@ -117,9 +127,9 @@
      <div class="contactForm">
       <h1>CONTACT US</h1>
        <br><br>
-            <input type="text" id="name-input" placeholder="Name"></textarea>
+            <input class="rounded" type="text" id="name-input" placeholder="Name"></textarea>
        <br><br>
-            <input type="text" id="email-input" placeholder="Email"></textarea>
+            <input class="rounded" type="text" id="email-input" placeholder="Email"></textarea>
        <br><br>
            <textarea rows="5" id="message-input" placeholder="Message"></textarea>
        <br><br>
