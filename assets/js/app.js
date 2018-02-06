@@ -110,10 +110,10 @@ function onPageLoad(){
         var imageArrayLength = results[i]["images"].length;
         // console.log("Image array length is " + imageArrayLength);
         var randImg = getRandomInt(0, imageArrayLength);
-        // console.log("Random image int is: " + randImg);
+        console.log("Random image int is: " + randImg);
         // console.log("=================");
-        var imgSrc = results[i]["images"][randImg]["url"];
-        var imgCap = results[i]["images"][randImg]["altText"];
+        var imgSrc = results[i]["images"][parseInt(randImg)]["url"];
+        var imgCap = results[i]["images"][parseInt(randImg)]["altText"];
       }
 
       // doesn't create the first time when the page loads
