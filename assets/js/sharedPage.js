@@ -1,10 +1,6 @@
 var fullName;
-var id;
-var latLong;
-var name;
 var parkCode;
 var url;
-var weatherInfo;
 
 $(document).ready(function(){
   onPageLoad();
@@ -15,15 +11,14 @@ function onPageLoad(){
   var urlParams;
   (window.onpopstate = function () {
    var match,
-       pl     = /\+/g,  // Regex for replacing addition symbol with a space
+       pl = /\+/g,  // Regex for replacing addition symbol with a space
        search = /([^&=]+)=?([^&]*)/g,
        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-       query  = window.location.search.substring(1);
+       query = window.location.search.substring(1);
 
    urlParams = {};
    while (match = search.exec(query))
       urlParams[decode(match[1])] = decode(match[2]);
-    // debugger;
   })();
 
 // https://developer.nps.gov/api/v1/parks?parkCode=wrst&fields=images&api_key=dR9liF6s3ztufwHduTKv4mfNqrtq3iGWp8dxjzcr
@@ -83,22 +78,25 @@ function onPageLoad(){
     
     var title = dataResults[0]["fullName"];
     var directions = dataResults[0]["directionsInfo"];
+    var link = dataResults[0]["url"];
+
     if (dataResults[0]["images"].length === 0) {
       imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
     } else {
-      var imgSrc = dataResults[0]["images"][0]["url"];
+      var imageArrayLength = dataResults[0]["images"].length;
+      var randImg = getRandomInt(0, imageArrayLength);
+      var imgSrc = dataResults[0]["images"][parseInt(randImg)]["url"];
     }
 
     var imgDiv = $('<img src="'+imgSrc+'" style="width: 100%;" />');
 
-    $("#park-title").text(title);
+    $("#park-title").html('<a href="'+link+'" target="_blank">' + title + '</a>');
     $("#directions-div").text(directions);
     $("#main-image").append(imgDiv);
   });
 }
 
-
-function getLatLngFromString(ll) {
-  var newstr = ll.replace(/lat/, '"lat"').replace(/long/i, '"lng"');
-  return JSON.parse("{"+newstr+"}"); 
+function getRandomInt(min, max) {
+  return Math.random() * (max - min) + min;
 }
+
