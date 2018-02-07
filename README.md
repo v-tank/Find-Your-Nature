@@ -12,7 +12,7 @@ If you want to load the app onto your computer, please clone it by using this li
 
 In order to access the user comments database, you will need to create your own [firebase account](https://firebase.google.com/). In the html files and review.js file, replace the initialize firebase code with your own. If you wish to use your own API keys, use the links in the "APIs Used" section below to sign up for a key.
 
-[Find-Your-Nature/readme-images/firebase.jpg]
+![](Find-Your-Nature/readme-images/firebase.jpg)
 
 
 __Demo__
@@ -21,13 +21,13 @@ To experience a demo of Find Your Nature, click the following link: [https://v-t
 
 Getting Started:
 
-![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
+![](Find-Your-Nature/readme-images/Slide1.png)
 
-[Find-Your-Nature/readme-images/Slide2.png]
+![](Find-Your-Nature/readme-images/Slide2.png)
 
-[Find-Your-Nature/readme-images/Slide3.png]
+![](Find-Your-Nature/readme-images/Slide3.png)
 
-[Find-Your-Nature/readme-images/Slide4.png]
+![](Find-Your-Nature/readme-images/Slide4.png)
 
 
 __Technologies Used__
