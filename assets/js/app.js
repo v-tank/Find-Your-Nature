@@ -110,7 +110,7 @@ function onPageLoad(){
       if (results[i]["images"].length === 0) {
         console.log("image and caption not available :( ");
         imgCap = "Error";
-        imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
+        imgSrc = "assets/images/notfound.jpg";
       } else {
         var imageArrayLength = results[i]["images"].length;
         var randImg = getRandomInt(0, imageArrayLength);
