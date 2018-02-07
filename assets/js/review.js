@@ -21,28 +21,38 @@ $(document).ready(function(){
 	$("#review-submit").on("click", function(event){
 		// debugger;
 		event.preventDefault();
-
+		
 		var reviewName = $("#review-name").val().trim();
 		var reviewMessage = $("#review-message").val().trim();
 		var reviewDate = Date.now();
 		var starRating = $("input[name='rating']:checked").val();
-		// console.log(reviewName);
-		// console.log(reviewMessage);
-		// debugger;
 
-		var newReview = {
-			name: reviewName,
-			date: reviewDate,
-			review: reviewMessage,
-			rating: starRating
-		};
-		database.ref("/" + parkName).push(newReview);
+		if ((reviewName !== "") && (reviewMessage !== "") && (starRating !== "")) {
+		
+			var newReview = {
+				name: reviewName,
+				date: reviewDate,
+				review: reviewMessage,
+				rating: starRating
+			};
+			
+			database.ref("/" + parkName).push(newReview);
 
-		console.log("Review added!");
+			console.log("Review added!");
 
-		// CLOSE MODAL UPON SUBMIT!
-		$("#review-name").val("");
-		$("#review-message").val("");
+			$("#review-name").val("");
+			$("#review-message").val("");
+		}
+		else {
+			if (reviewName === "") {
+			$("#review-name").val("");
+			$("#review-name").attr("placeholder", "Please enter your name!");
+			}
+			if (reviewMessage === "") {
+				$("#review-message").val("");
+				$("#review-message").attr("placeholder", "Please enter a message!");
+			}
+		}
 	});
 
 	// Dynamically appends reviews
