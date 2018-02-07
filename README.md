@@ -17,7 +17,7 @@ To experience a demo of Find Your Nature, click the following link: [https://v-t
 If you want to load the app onto your computer, please clone the repo using this link: [git@github.com:v-tank/Find-Your-Nature.git](git@github.com:v-tank/Find-Your-Nature.git)
 
 In order to access the user comments database, you will need to create your own [Firebase account](https://firebase.google.com/). In the HTML and *review.js* files, replace the `initialize firebase` code with your own. To generate your own API keys, use the links in the "APIs Used" section below to sign up for a key.
-![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/firebase.jpg "Firebase code snippet")
+![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/firebase.png "Firebase code snippet")
 
 
 ### Getting Started: ###
