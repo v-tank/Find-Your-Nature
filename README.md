@@ -21,7 +21,7 @@ To experience a demo of Find Your Nature, click the following link: [https://v-t
 
 Getting Started:
 
-[!image here](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
+![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
 
 [Find-Your-Nature/readme-images/Slide2.png]
 
