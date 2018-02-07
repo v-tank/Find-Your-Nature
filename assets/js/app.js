@@ -1,7 +1,22 @@
+// Firebase
+var config = {
+    apiKey: "AIzaSyC9lq8l9sXlpUwQrGAWUda2qw_-faJUbiA",
+    authDomain: "commentform-807d4.firebaseapp.com",
+    databaseURL: "https://commentform-807d4.firebaseio.com",
+    projectId: "commentform-807d4",
+    storageBucket: "",
+    messagingSenderId: "184726345923"
+  };
+firebase.initializeApp(config);
+
+var database = firebase.database();
+var ref = database.ref();
+
 var uluru;
 var parks =[];
 var state;
 var stateCode; 
+var num;
 
 var initialLoad = true;
 
@@ -145,9 +160,35 @@ function onPageLoad(){
 }
 
 function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
+  database.ref('/' + parkCode).once('value', function(snapshot) {
+    console.log(snapshot.val());
+    var num = snapshot.numChildren();
+    // divToCreate.append(num);
+
+    var ratings = 0;
+    database.ref('/' + parkCode).on("child_added", function(snapshot, prevChildKey){
+      var rate = snapshot.val();
+      console.log(rate);
+      if (rate.rating) {
+        ratings += parseInt(rate.rating);
+      }
+      console.log("Sum of ratings is: " + ratings);
+      var aveRating = Math.floor(ratings / num);
+      console.log("Total number of ratings: " + num);
+      console.log("Average rating is : " + aveRating); 
+
+      divToCreate.append("Number of Ratings: " + num + "; Ave. Rating: " + aveRating + "--");
+    });
+  });
+
+  
+
+
+
+
   
   var newPath = "park.html?parkCode=" + parkCode;
-  var divToCreate = $('<div class="card" style="width: 25rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
+  var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
   divToCreate.attr('id', "card_"+parkCode);
   $("#parks-items").append(divToCreate);
 
