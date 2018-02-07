@@ -20,7 +20,8 @@ __Demo__
 To see demo of Find Your Nature, click the following link: [https://v-tank.github.io/Find-Your-Nature/]
 
 Getting Started:
-(https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
+
+[](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
 
 [Find-Your-Nature/readme-images/Slide2.png]
 
