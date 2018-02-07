@@ -3,20 +3,21 @@ _This project was developed by: Frank Valdez, Julie Nguyen, Konstantin Tikhonov,
 
 ## Description ##
 
-Find Your Nature is an online tool written in html, css, and javascript that assists users in finding national attractions (i.e. parks, monuments, trails, etc.) in the US. Data is pulled from the National Park Service API to provide general information regarding the national attraction. Users also have access to weather and air quality of the area.
-
-
-## How-To ## 
-
-If you want to load the app onto your computer, please clone it by using this link: git@github.com:v-tank/Find-Your-Nature.git
-
-In order to access the user comments database, you will need to create your own [firebase account](https://firebase.google.com/). In the html files and review.js file, replace the initialize firebase code with your own. If you wish to use your own API keys, use the links in the "APIs Used" section below to sign up for a key.
-![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/firebase.jpg "Firebase code snippet")
+Find Your Nature is a web app written in HTML, CSS, and JavaScript to assist users in finding national attractions (i.e. parks, monuments, trails, etc.) in the US. Data is pulled from the National Park Service API to provide general information regarding the national attraction. Users also have access to weather data, air quality, park alerts, as well as reviews from other users.
 
 
 ## Demo ##
 
-To experience a demo of Find Your Nature, click the following link: [https://v-tank.github.io/Find-Your-Nature/]
+To experience a demo of Find Your Nature, click the following link: [https://v-tank.github.io/Find-Your-Nature/](https://v-tank.github.io/Find-Your-Nature/)
+
+
+## How-To ## 
+
+If you want to load the app onto your computer, please clone the repo using this link: [git@github.com:v-tank/Find-Your-Nature.git](git@github.com:v-tank/Find-Your-Nature.git)
+
+In order to access the user comments database, you will need to create your own [Firebase account](https://firebase.google.com/). In the HTML and *review.js* files, replace the `initialize firebase` code with your own. To generate your own API keys, use the links in the "APIs Used" section below to sign up for a key.
+![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/firebase.jpg "Firebase code snippet")
+
 
 #### Getting Started: ####
 
@@ -28,12 +29,14 @@ To experience a demo of Find Your Nature, click the following link: [https://v-t
 
 ## Technologies Used ##
 
-Firebase was used as a database to store user reviews and ratings for each park. Moment.js was used to convert the firebase built-in timestamp from unix to month/date/year, hours:minutes. Styling of the site was done using CSS, Bootstrap 4, Google Fonts, Font Awesome, and Animate.css.
+* Firebase - To store user reviews and ratings for each park in the database
+* Moment.js - To log and convert the built-in timestamp from unix to month/date/year, hours:minutes 
+* HTML, CSS, Bootstrap 4, Google Fonts, Font Awesome, and Animate.css - To create the UI/UX
 
 
 ## APIs Used ## 
 
-_All the APIs below are free for public use_
+_All the APIs below are free for public use:_
 1. [National Park Service Data API](https://www.nps.gov/subjects/digital/nps-data-api.htm)
 2. [Google Maps API](https://developers.google.com/maps/)
 3. [Dark Sky API](https://darksky.net/dev)
@@ -43,16 +46,17 @@ _All the APIs below are free for public use_
 ## Future Development ##
 
 Features:
-* Add in recommended activities of attraction based on popularity
-* Display if place is dog friendly
+* Add in recommended activities of attraction based on popularity (e.g biking, camping, etc…)
+* Display whether the places are dog-friendly
 * Add information about entrance fees
-* Add things to do (e.g biking, camping, etc…)
 * Display events in a park near you
 * Park Contact Information
 * Add places nearby (e.g hotel, restaurants, etc..)
 * Adding images slideshow
+* Add a 'Near-Me' feature to geo-locate the user and find the closest attractions within a given radius
 
 Improvements:
 * Decrease the load time of maps
+* Detailed card info to show the average ratings for each attraction
 
 
