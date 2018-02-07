@@ -110,7 +110,7 @@ function onPageLoad(){
       if (results[i]["images"].length === 0) {
         console.log("image and caption not available :( ");
         imgCap = "Error";
-        imgSrc = "https://www.makeupgeek.com/content/wp-content/themes/makeup-geek/images/placeholder-square.svg";
+        imgSrc = "assets/images/notfound.jpg";
       } else {
         var imageArrayLength = results[i]["images"].length;
         var randImg = getRandomInt(0, imageArrayLength);
@@ -147,7 +147,7 @@ function onPageLoad(){
 function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
   
   var newPath = "park.html?parkCode=" + parkCode;
-  var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
+  var divToCreate = $('<div class="card" style="width: 25rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
   divToCreate.attr('id', "card_"+parkCode);
   $("#parks-items").append(divToCreate);
 

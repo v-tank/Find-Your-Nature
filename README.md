@@ -1,4 +1,5 @@
 # Find-Your-Nature
+
 _This project was developed by: Frank Valdez, Julie Nguyen, Konstantin Tikhonov, Vaibhav Tank & Yvette Tran_
 
 
