@@ -17,11 +17,11 @@ In order to access the user comments database, you will need to create your own 
 
 __Demo__
 
-To see demo of Find Your Nature, click the following link: [https://v-tank.github.io/Find-Your-Nature/]
+To experience a demo of Find Your Nature, click the following link: [https://v-tank.github.io/Find-Your-Nature/]
 
 Getting Started:
 
-[image here](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
+[!image here](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png)
 
 [Find-Your-Nature/readme-images/Slide2.png]
 
