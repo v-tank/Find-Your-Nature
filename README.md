@@ -1,9 +1,10 @@
-# Find-Your-Nature: Project 1 - Group 4
-_This project was developed by: Frank Valdez, Julie Nguyen, Konstantin Tikhonov, Vaibhav Tank, & Yvette Tran_
+# Find-Your-Nature
+_This project was developed by: Frank Valdez, Julie Nguyen, Konstantin Tikhonov, Vaibhav Tank & Yvette Tran_
+
 
 ## Description ##
 
-Find Your Nature is a web app written in HTML, CSS, and JavaScript to assist users in finding national attractions (i.e. parks, monuments, trails, etc.) in the US. Data is pulled from the National Park Service API to provide general information regarding the national attraction. Users also have access to weather data, air quality, park alerts, as well as reviews from other users.
+*Find Your Nature* is a web app to assist users in finding national attractions (i.e. parks, monuments, trails, etc.) in the US. Data is pulled from the National Park Service API to provide general information regarding the national attraction. Users also have access to weather data, air quality, park alerts, as well as reviews from other users.
 
 
 ## Demo ##
@@ -19,19 +20,27 @@ In order to access the user comments database, you will need to create your own 
 ![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/firebase.jpg "Firebase code snippet")
 
 
-#### Getting Started: ####
+### Getting Started: ###
 
+1. 
 ![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide1.png "Select a State")
+
+2. 
 ![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide2.png "Select a Park")
+
+3. 
 ![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide3.png "Park Detailed Info")
+
+4. 
 ![](https://github.com/v-tank/Find-Your-Nature/blob/readme/readme-images/Slide4.png "Reviews Modal")
 
 
 ## Technologies Used ##
 
+* JavaScript/jQuery - To create the logic for the entire project
+* HTML, CSS, Bootstrap 4, Google Fonts, Font Awesome, and Animate.css - To create the UI/UX
 * Firebase - To store user reviews and ratings for each park in the database
 * Moment.js - To log and convert the built-in timestamp from unix to month/date/year, hours:minutes 
-* HTML, CSS, Bootstrap 4, Google Fonts, Font Awesome, and Animate.css - To create the UI/UX
 
 
 ## APIs Used ## 
@@ -56,7 +65,5 @@ Features:
 * Add a 'Near-Me' feature to geo-locate the user and find the closest attractions within a given radius
 
 Improvements:
-* Decrease the load time of maps
+* Decrease the load time for the webpage and maps
 * Detailed card info to show the average ratings for each attraction
-
-
