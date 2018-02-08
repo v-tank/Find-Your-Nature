@@ -166,18 +166,21 @@ function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
     // divToCreate.append(num);
 
     var ratings = 0;
+    var i = 0;
     database.ref('/' + parkCode).on("child_added", function(snapshot, prevChildKey){
       var rate = snapshot.val();
       console.log(rate);
       if (rate.rating) {
         ratings += parseInt(rate.rating);
-      }
-      console.log("Sum of ratings is: " + ratings);
-      var aveRating = Math.floor(ratings / num);
-      console.log("Total number of ratings: " + num);
-      console.log("Average rating is : " + aveRating); 
-
-      divToCreate.append("Number of Ratings: " + num + "; Ave. Rating: " + aveRating + "--");
+        console.log("Sum of ratings is: " + ratings);
+        var aveRating = Math.floor(ratings / num);
+        console.log("Total number of ratings: " + num);
+        console.log("Average rating is : " + aveRating); 
+        if (i === (num - 1)) {
+          divToCreate.append("Average Rating: " + aveRating + "/5; Total Reviews: " + num);
+        }
+      } 
+      i++;
     });
   });
 
