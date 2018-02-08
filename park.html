@@ -2,24 +2,18 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Park Info</title>
+  <title>Park Info - Find Your Nature</title>
 
-  <!-- Bootstrap -->
+  <!-- Bootstrap Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-
-  <!-- Main style sheet -->
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 
   <!-- Firebase -->
@@ -31,7 +25,7 @@
   <!-- Font Awesome -->
   <script src="https://use.fontawesome.com/5fafc269f6.js"></script>
 
-  <!-- Favivon -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/tree.png">
 
   <!-- Animate.css -->
@@ -42,10 +36,11 @@
 
   <!-- For share buttons on park info page -->
   <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5a7961536507d000137b591e&product=inline-share-buttons' async='async'></script>
+
 </head>
 <body>
-  <!-- Banner -->
   <a href="index.html">
+    <!-- Banner image -->
     <div class="hero-image animated fadeIn">
       <div class="hero-text">
         <h1>find your nature</h1>
@@ -53,20 +48,31 @@
       </div>
     </div>
   </a>
+
   <br>
+  
+  <!-- Main container to hold all the info -->
   <div class="container">
     <div class="row justify-content-center">
+      <!-- Park title that will be dynamically added from the JS file -->
       <h2 id="park-title"></h2>
     </div>
+
     <br>
+      
     <div class="row">
+      <!-- Div to hold an image returned from the API -->
       <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12" id="main-image">
         <br>
         <br>
+
         <h4>Reviews:</h4>
+        
         <!-- Button triggers modal -->
         <button id="add-review" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="width: 26%;">Add a Review!</button>
+
         <br>
+        
         <!-- Modal for users to write/submit review -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -77,6 +83,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+              <!-- Review form -->
               <div class="modal-body">
                 <form>
                   <div class="form-group">
@@ -88,23 +95,23 @@
                     <div id="rating">
                       <input id="star-5" type="radio" name="rating" value="5">
                       <label for="star-5" title="5 stars">
-                          <i class="active fa fa-star" aria-hidden="true"></i>
+                        <i class="active fa fa-star" aria-hidden="true"></i>
                       </label>
                       <input id="star-4" type="radio" name="rating" value="4">
                       <label for="star-4" title="4 stars">
-                          <i class="active fa fa-star" aria-hidden="true"></i>
+                        <i class="active fa fa-star" aria-hidden="true"></i>
                       </label>
                       <input id="star-3" type="radio" name="rating" value="3">
                       <label for="star-3" title="3 stars">
-                          <i class="active fa fa-star" aria-hidden="true"></i>
+                        <i class="active fa fa-star" aria-hidden="true"></i>
                       </label>
                       <input id="star-2" type="radio" name="rating" value="2">
                       <label for="star-2" title="2 stars">
-                          <i class="active fa fa-star" aria-hidden="true"></i>
+                        <i class="active fa fa-star" aria-hidden="true"></i>
                       </label>
                       <input id="star-1" type="radio" name="rating" value="1">
                       <label for="star-1" title="1 star">
-                          <i class="active fa fa-star" aria-hidden="true"></i>
+                        <i class="active fa fa-star" aria-hidden="true"></i>
                       </label>
                     </div>
                   </div>
@@ -114,36 +121,50 @@
                   </div>
                 </form>
               </div>
+
               <div class="modal-footer">
               <button id="review-submit" type="submit" class="btn btn-success" data-dismiss="modal">Submit</button>
               </div> 
             </div>
           </div>
         </div>
+
         <br>
-        <!-- Reviews dynamically generated -->
+        
+        <!-- Reviews dynamically generated through JS file -->
         <div id="reviews-div">
+          
         </div>
       </div>
+      
+      <!-- Right div to hold weather and directions info -->
       <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12">
+        <!-- Empty weather div -->
         <div id="weather-div"> 
         </div>
+
+        <!-- Empty directions div -->
         <h4>Directions:</h4>
         <p id="directions-div"></p>
+        
+        <!-- Empty alerts div -->
         <h4>Alerts:</h4>
         <ol id="alerts-div">
           None
         </ol>
       </div>
     </div>
+
     <br>
-    <!-- For share buttons -->
+    
+    <!-- Div to hold share buttons -->
     <div class="row">
       <div class="col-12">
         <div class="sharethis-inline-share-buttons"></div>
       </div>
     </div>
   </div>
+
   <!--Footer -->
   <div class="footer">
     <div class="contactForm">
@@ -155,10 +176,10 @@
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- Script for Review -->
+  <!-- JS file to handle reviews -->
   <script type="text/javascript" src="assets/js/review.js"></script>
   
-  <!-- Script -->
+  <!-- Main JS file to create the page -->
   <script src="assets/js/sharedPage.js"></script>
 </body>
 </html>
