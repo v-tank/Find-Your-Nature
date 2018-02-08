@@ -1,4 +1,4 @@
-// Firebase
+// Initiates Firebase
 var config = {
     apiKey: "AIzaSyC9lq8l9sXlpUwQrGAWUda2qw_-faJUbiA",
     authDomain: "commentform-807d4.firebaseapp.com",
@@ -10,56 +10,64 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-var ref = database.ref();
 
+// Define global variables
 var uluru;
-var parks =[];
+var parks = [];
 var state;
 var stateCode; 
 var num;
 
 var initialLoad = true;
 
+// Function to fire off once the page is done loading
 $(document).ready(function(){
-  // h3 animation
+  // Timer to fire off h3 animation after a second
   setTimeout(function(){$("#in-out").attr("class", "animated tada");}, 1000);
+
+  // Hides 'park' dropdown at the beginning
   $("#dropdownMenuButton").addClass('hiddenAtStart');
+
+  // Calls the main function
   onPageLoad();
 });
 
+// On-click function for the state dropdown menu
 $('#state').on("change", function(event){ 
   event.preventDefault();
+
+  // Shows 'park' button after state is selected
   $("#dropdownMenuButton").removeClass('hiddenAtStart');
+  
   $("a.dropdown-item").remove();
-  parks=[];
+
+  // Empties parks array
+  parks = [];
+
+  // Grabs the stateCode attribute upon click
   stateCode = $(this).val();
+
+  // Grabs the state name from the dropdown menu
   state =  $("#state option:selected").data('geo');
   onPageLoad();
 });
 
-function getStateLatLng (location){
-  var geocoder = new google.maps.Geocoder();
-  geocoder.geocode( { 'address': location }, function(results, status) {
-  if (status == google.maps.GeocoderStatus.OK) {
-    var templatlng = results[0].geometry.location;
-    var templatlngObj = {lat: templatlng.lat(), lng: templatlng.lng()};
-    return JSON.parse(templatlngObj)
-  } else {
-      alert("Could not find location: " + location);
-    }
-  });
-}
-
+// On-click function for state dropdown items
 $(document).on("click", ".dropdown-item", function() {
-
+  // Grabs the geo data
   var parkGeo = $(this).data("value-geo");
-  mainMapInit([["",parkGeo]], "map", 10, [parkGeo]);
-  $( ".card" ).show();
-  $( ".card" ).not( "#card_"+$(this).data("value-parkCode")).hide();
+
+  // Calls function to display the map with the default zoom level and center location with the markers
+  mainMapInit([["", parkGeo]], "map", 10, [parkGeo]);
+  $(".card").show();
+  $(".card").not("#card_"+$(this).data("value-parkCode")).hide();
+
+  // Calls function to show air quality map
   waqiMapInit([parkGeo]);
 
 });
 
+// Function to create the maps with markers for parks in each state, the default zoom level, and the center point
 function mainMapInit(parks, div, zooom, center){
   var centerLatLng;
   centerLatLng = new google.maps.LatLng(center[0]);
@@ -72,28 +80,30 @@ function mainMapInit(parks, div, zooom, center){
   var infowindow = new google.maps.InfoWindow();
   var marker, i;
 
+  // Puts a marker in the position of each park in the 'parks' array
   for (i = 0; i < parks.length; i++) {  
-
     marker = new google.maps.Marker({
     position: new google.maps.LatLng(parks[i][1]),
     map: map, title: parks[i][0]});
-
   }
 
+  // Method to pan the map upon change of center location
   map.addListener('center_changed', function() {
     window.setTimeout(function() {
       map.panTo(marker.getPosition());
     }, 3000);
   });
 
+  // Method to change zoom level
   marker.addListener('click', function() {
     map.setZoom(8);
     map.setCenter(marker.getPosition());
   });
 } 
 
+// Main function that does the leg-work
 function onPageLoad(){
-
+  // AJAX calls to grab park info
   $.ajax({
     url: 'https://developer.nps.gov/api/v1/parks',
     dataType: 'json',
@@ -102,14 +112,18 @@ function onPageLoad(){
       fields: "images",
       api_key:'dR9liF6s3ztufwHduTKv4mfNqrtq3iGWp8dxjzcr'}
   }).done(function(response) {
-    $("#parks-items").empty();
-    console.log("Finished ajax call");
 
+    // Empties out the existing cards on the screen
+    $("#parks-items").empty();
+    // console.log("Finished ajax call");
+
+    // Re-creates the air quality map for the parks
     waqiMapInit();
 
     var results = response.data;
-    console.log(results);
+    // console.log(results);
 
+    // Loop to go through the entire response and grab useful info for each park
     for (var i = 0; i < results.length; i++) {
       // console.log("name : "+i+""+ results[i].name) ;
       if (results[i].latLong.length > 0) {
@@ -122,18 +136,22 @@ function onPageLoad(){
       var url = results[i]["url"];
       var parkCode = results[i]["parkCode"];
 
+      // Error handler if no image is returned; will display a 'notfound' image
       if (results[i]["images"].length === 0) {
-        console.log("image and caption not available :( ");
+        // console.log("image and caption not available :( ");
         imgCap = "Error";
         imgSrc = "assets/images/notfound.jpg";
       } else {
+        // otherwise, save the image url and caption into variables
         var imageArrayLength = results[i]["images"].length;
+
+        // Calls function to randomly generate an integer in the length of the images array to display different ones instead of the same image every time
         var randImg = getRandomInt(0, imageArrayLength);
         var imgSrc = results[i]["images"][parseInt(randImg)]["url"];
         var imgCap = results[i]["images"][parseInt(randImg)]["altText"];
       }
 
-      // doesn't create the first time when the page loads
+      // Doesn't create cards the first time when the page loads. Else calls the function to create them by passing required info
       if (initialLoad === false) {
         createCards(fullName, description, imgSrc, imgCap, url, parkCode);
       }
@@ -144,6 +162,7 @@ function onPageLoad(){
       }
     }
 
+    // Dynamically creates the park dropdown menu based on the selected state
     for (var i = 0; i < parks.length; i++) {
       var dpItem = $("<a>").addClass('dropdown-item').attr('id', '#'+i).data('value-geo',parks[i][1]).data('value-parkCode', parks[i][2]);
       //debugger;
@@ -159,49 +178,62 @@ function onPageLoad(){
   });
 }
 
+// Function to create cards 
 function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
-  database.ref('/' + parkCode).once('value', function(snapshot) {
-    console.log(snapshot.val());
-    var num = snapshot.numChildren();
-    // divToCreate.append(num);
 
-    var ratings = 0;
+  // Calls firebase to check for number of reviews for each park and to calculate the average rating
+  database.ref('/' + parkCode).once('value', function(snapshot) {
+    
+    var num = snapshot.numChildren();
+
+    // Initialize the sum variable to 0
+    var ratingSum = 0;
+
+    // Hack to only display rating once
     var i = 0;
+
+    // Goes through each object in the parkCodes to grab the ratings
     database.ref('/' + parkCode).on("child_added", function(snapshot, prevChildKey){
       var rate = snapshot.val();
-      console.log(rate);
+
+      // Go through if rating exists for the given park
       if (rate.rating) {
-        ratings += parseInt(rate.rating);
-        console.log("Sum of ratings is: " + ratings);
-        var aveRating = Math.floor(ratings / num);
-        console.log("Total number of ratings: " + num);
-        console.log("Average rating is : " + aveRating); 
+        // Add the rating value to the running sum
+        ratingSum += parseInt(rate.rating);
+
+        // Calculate the average and round down
+        var aveRating = Math.floor(ratingSum / num);
+        
+        // Only displays the average rating when the last rating has been reached (else it displays this info (num-1) times)
         if (i === (num - 1)) {
           divToCreate.append("Average Rating: " + aveRating + "/5; Total Reviews: " + num);
         }
       } 
+      // increment the counter for the hack
       i++;
     });
   });
 
-  
-
-
-
-
-  
+  // creates a URL for the park.html page; this is REALLY important because the URL can then be shared with friends
   var newPath = "park.html?parkCode=" + parkCode;
-  var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
-  divToCreate.attr('id', "card_"+parkCode);
-  $("#parks-items").append(divToCreate);
 
+  // creates a card with the required info
+  var divToCreate = $('<div class="card" style="width: 30rem;"><img class="card-img-top" src="'+imgSrc+'" alt="'+imgCap+'"><div class="card-body"><h5 class="card-title">'+fullName+'</h5><p class="card-text">'+description+'</p><a href="'+newPath+'" class="btn btn-primary park" value="'+parkCode+'">More Info</a></div></div>');
+
+  // Attaches a unique ID for each card using the parkCode
+  divToCreate.attr('id', "card_"+parkCode);
+
+  // Append the card to the empty div on the page
+  $("#parks-items").append(divToCreate);
 }
 
+// Funcion to grab the latitutde and longitude from a string
 function getLatLngFromString(ll) {
   var newstr = ll.replace(/lat/, '"lat"').replace(/long/i, '"lng"');
   return JSON.parse("{"+newstr+"}"); 
 }
 
+// Function to generate and center the air quality map
 function waqiMapInit(center){
 
   var centerwaqi;
@@ -209,20 +241,14 @@ function waqiMapInit(center){
 
   if (center){
     centerwaqi= new google.maps.LatLng(center[0]);
-    zoomwaqi= 10;
-  }
-  else if (state) {
-   centerwaqi= new google.maps.LatLng(state);
-   zoomwaqi= 6;
-
+    zoomwaqi = 10;
+  } else if (state) {
+    centerwaqi= new google.maps.LatLng(state);
+    zoomwaqi = 6;
   } else {
-
-  centerwaqi = new google.maps.LatLng(39.5,-98.35);
-  zoomwaqi= 3;
-
+    centerwaqi = new google.maps.LatLng(39.5,-98.35);
+    zoomwaqi = 3;
   }
-   console.log("center "+center);
-  console.log("centerwaqi" +centerwaqi);
 
   var map = new google.maps.Map(document.getElementById('map2'),  { 
     center: centerwaqi, 
@@ -237,10 +263,7 @@ function waqiMapInit(center){
   map.overlayMapTypes.insertAt(0,waqiMapOverlay);  
 }
 
+// Function to generate a random int in a given range (max exclusive)
 function getRandomInt(min, max) {
   return Math.random() * (max - min) + min;
 }
-
-$(document).on("click", ".park", function() {
-  // console.log($(this).attr("value"));
-});
