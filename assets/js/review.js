@@ -1,11 +1,11 @@
 // Initiates Firebase
 var config = {
-    apiKey: "AIzaSyC9lq8l9sXlpUwQrGAWUda2qw_-faJUbiA",
-    authDomain: "commentform-807d4.firebaseapp.com",
-    databaseURL: "https://commentform-807d4.firebaseio.com",
-    projectId: "commentform-807d4",
-    storageBucket: "",
-    messagingSenderId: "184726345923"
+  apiKey: "AIzaSyC9lq8l9sXlpUwQrGAWUda2qw_-faJUbiA",
+  authDomain: "commentform-807d4.firebaseapp.com",
+  databaseURL: "https://commentform-807d4.firebaseio.com",
+  projectId: "commentform-807d4",
+  storageBucket: "",
+  messagingSenderId: "184726345923"
   };
 firebase.initializeApp(config);
 
