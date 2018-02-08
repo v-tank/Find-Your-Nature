@@ -1,4 +1,4 @@
-// Firebase
+// Initiates Firebase
 var config = {
     apiKey: "AIzaSyC9lq8l9sXlpUwQrGAWUda2qw_-faJUbiA",
     authDomain: "commentform-807d4.firebaseapp.com",
@@ -19,14 +19,13 @@ $(document).ready(function(){
 
 	// Creates a review
 	$("#review-submit").on("click", function(event){
-		// debugger;
 		event.preventDefault();
-		
+		// Grabs reviews and timestamps them
 		var reviewName = $("#review-name").val().trim();
 		var reviewMessage = $("#review-message").val().trim();
 		var reviewDate = Date.now();
 		var starRating = $("input[name='rating']:checked").val();
-
+		// Prevents user from entering blank reviews
 		if ((reviewName !== "") && (reviewMessage !== "") && (starRating !== "")) {
 		
 			var newReview = {
@@ -35,7 +34,7 @@ $(document).ready(function(){
 				review: reviewMessage,
 				rating: starRating
 			};
-			
+			// Creates firebase reference for park reviews
 			database.ref("/" + parkName).push(newReview);
 
 			console.log("Review added!");
@@ -43,6 +42,7 @@ $(document).ready(function(){
 			$("#review-name").val("");
 			$("#review-message").val("");
 		}
+		// Prompted when user tries to submit blank reviews
 		else {
 			if (reviewName === "") {
 			$("#review-name").val("");
@@ -55,22 +55,21 @@ $(document).ready(function(){
 		}
 	});
 
-	// Dynamically appends reviews
+	// Dynamically appends reviews from firebase
 	database.ref("/" + parkName).on("child_added", function(childSnapshot){
 		var reviewName = childSnapshot.val().name;
 		var reviewMessage = childSnapshot.val().review;
 		var reviewDate = moment(childSnapshot.val().date).format("MMM Do YYYY, h:mm:ss a");
 		var starRating = childSnapshot.val().rating;
-
-
+		// Create bootstrap div to hold reviews
 		var housingDiv = $('<div class="row">');
 		var colDiv = $("<div class='col-12'>");
-
+		// For rating stars
 		var stars = $("<div>");
 		for (var i = 1; i <= starRating; i++){
 			stars.append('<i class="active fa fa-star" aria-hidden="true"></i>');
 		}
-
+		// Appends rating stars, reviewer name, message & timestamp to website
 		colDiv.append(stars);
 		colDiv.append('<div><strong>'+reviewName+'</strong></div>');
 		colDiv.append('<div><p style="color: #999;" class="mb-2">'+reviewDate+'</p></div>');
@@ -79,8 +78,6 @@ $(document).ready(function(){
 
 		$("#reviews-div").prepend(housingDiv);
 
-
-		// $("#reviews-div").append("<br><p class='border border-dark rounded w-50'><strong>Name:</strong> " + reviewName + "<br><strong>Date Posted:</strong> " + reviewDate + "<br>" + reviewMessage + "</p>");
 	}, function(errorObject){
 		console.log("Error: " + errorObject.code);});
 });
