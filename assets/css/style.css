@@ -1,12 +1,10 @@
 body, html {
   height: 100%;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
   color: #6B6B6B;
-
-  /*text-shadow: 1px 1px #EFEFEF;*/
 }
 
+/* Modifies the banner image and adds an overlay gradient */
 .hero-image {
   background: linear-gradient(
       rgba(0, 0, 0, 0.05), 
@@ -20,6 +18,7 @@ body, html {
   position: relative;
 }
 
+/* Modifies the banner text positioning */
 .hero-text {
   text-align: center;
   position: absolute;
@@ -33,6 +32,7 @@ body, html {
   font-size: 90px;
 }
 
+/* Font modifications */
 h1, h3 {
   font-family: 'Amatic SC', cursive !important;
   letter-spacing: 10px;
@@ -43,16 +43,14 @@ h2,h4,h5,p,ol {
   color: #000;
 }
 
+/* Sets a predefined height for the dropdown menu */
 .scrollable-menu {
   height: auto;
   max-height: 400px;
   overflow-x: hidden;
 }
 
-.custom {
-	margin: 0 40px;
-}
-
+/* Class to hide park selection button at the beginning */
 .hiddenAtStart {
 	display: none;
 }
@@ -61,6 +59,7 @@ h2,h4,h5,p,ol {
 	padding: 0 0.5px;
 }
 
+/* Display cards as an inline table to get the grid look */
 .card {
 	display: inline-table;
 	margin: 30px;
@@ -71,8 +70,6 @@ button {
 	text-align: center;
 	font-size: 15px;
 	font-weight: 500;
-	color: #000;
-	color: #fff;
 	background-color: #3e3f48;
 	border: 2px solid #3e3f48;
 	padding: 8.5px 0px;
@@ -86,11 +83,12 @@ button:hover {
 	border: 2px solid #fff;
 }
 
+/* Sets the input text propertes */
 input[type=text] {
 	text-align: center;
 	height: 43px;
 	color: #666;
-	width: 100%;
+	width: 50%;
 	padding-left: 10px;
 }
 
@@ -105,32 +103,14 @@ input[type=submit]:hover {
 	background-color: #fbc365;
 }
 
-/*.contdiv {
-  width: 310px;
-  height: 410px;
-  background-color: grey;
-  margin: 5px;
-	float: left;
-	text-align: center;
-	color: white;
-}
-*/
+/* Defines the map dimensions */
 .mainmap {
 	width: 500px;
 	height: 400px;
 	margin: 10px auto;
 }
 
-input[type=text] {
-    width: 50%;
-  }
-
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-.meet-the-team {
-  margin-bottom: 100px;
-}
-
+/* Modifies the title on the contact page */
 .title {
   font-size: 60px;
   text-align: center;
@@ -153,28 +133,7 @@ input[type=text] {
   box-shadow: 4px 3px 3px #717171;
 }
 
-.team-section {
-  width: 85%;
-  margin: auto;
-  padding: 0;
-  list-style: none;
-  
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: center;
-}
-
-.team-member {
-  height: 200px;
-  display: inline;
-  margin: 20px 15px;
-  
-}
-
+/* Profile picture properties */
 .image-holder img {
   border-radius: 50%;
   display: inline;
@@ -182,56 +141,10 @@ input[type=text] {
   height: 200px;
 }
 
-.text-holder {
-  float: right;
-  height: 100%;
-  padding: 0 0 0 20px;
-  position: relative;
- /* width: 280px;*/
-}
-
-.text-content {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
+/* Modifies name properties */
 .team-name {
   font-size: 18px;
   margin: 12px 0;
-}
-
-.team-job {
-  font-style: italic;
-  color: #6B6B6B;
-  margin: 12px 0;
-}
-
-.team-bio {
-  font-size: 14px;
-  margin: 14px 0;
-}
-
-.team-contact {
-  margin: 14px 0;
-}
-
-.team-contact a {
-  text-decoration: none;
-  color: #6B6B6B;
-}
-
-.team-contact a:hover {
-  text-decoration: underline;
-}
-
-.shadow {
-  height: 20px;
-  width: 200px;
-  background-color: rgba(255,255,255,0);/*
-  -webkit-box-shadow: 20px 215px 150px 20px rgba(0,0,0,0.54);
-  -moz-box-shadow: 20px 215px 150px 20px rgba(0,0,0,0.54);*/
-  box-shadow: 0px 215px 175px 10px rgba(0,0,0,0.75);
 }
 
 /** Footer **/
@@ -244,13 +157,7 @@ input[type=text] {
 }
 
 .contactForm h1 {
-	font-family: 'IM Fell Double Pica', serif;
 	color: #ffffff;
-	text-align: center;
-}
-
-.contactForm h4 {
-	font-size: 12px;
 	text-align: center;
 }
 
@@ -266,6 +173,7 @@ input[type=text] {
 	border-radius: 10px;
 }
 
+/* Modifies placeholder text */
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   text-align: center;
 }
@@ -285,6 +193,7 @@ input[type=text] {
 	background-color: #fff; 
 }
 
+/* Modifies review button */
 #add-review {
   width: 10%;
   font-size: 12px;
@@ -295,22 +204,22 @@ input[type=text] {
   margin-top: 20px;
 }
 
-
+/* Modifies the reviews form properties*/
 #rating {
   direction: rtl;
   display: block;
 }
 
 #rating input[type=radio] {
-    display: none
+  display: none
 }
 
 #rating label {
-    color: #bbb;
-    font-size: 18px;
-    padding: 0;
-    cursor: pointer;
-    transition: all .3s ease-in-out
+  color: #bbb;
+  font-size: 18px;
+  padding: 0;
+  cursor: pointer;
+  transition: all .3s ease-in-out
 }
 
 #rating label:hover {
@@ -319,9 +228,11 @@ input[type=text] {
 
 #rating label:hover ~ label,
 #rating input[type=radio]:checked ~ label {
-    color: #f2b600
+  color: #f2b600
 }
 
+
+/* Media queries */
 @media (max-width: 1200px) {
 
   .mainmap {
