@@ -4,24 +4,25 @@
 	<meta charset="UTF-8">
 	<title>Find Your Nature</title>
 
-	<!-- Bootstrap -->
+	<!-- Bootstrap Scripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
+	<!-- Custom CSS -->
 	<link rel="stylesheet" href="assets/css/style.css">
 
 	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 
 	<!-- momentJS -->
-  	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-  	<!-- Favivon -->
+	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="assets/images/tree.png">
 
 	<!-- Animate.css -->
@@ -32,22 +33,25 @@
 
 </head>
 <body>
-	<!-- <nav> -->
 	
+	<!-- Banner image -->	
 	<div class="hero-image animated fadeIn">
 	  <div class="hero-text">
 	    <h1>find your nature</h1>
 	    <h3 id="in-out">Adventure is out there!</h3>
 	  </div>
 	</div>
-
+	
+	<!-- Dropdown container that stretches to the edge of the screen -->
 	<div class='container-fluid' style="background-color: #3e3f48;">
 		<p class="text-center mb-0 pt-2 text-white">FIND A PARK</p>
-
+		
+		<!-- New row with dropdown menu to select state along with breakpoints -->
 		<div class='row' style="height: 60px; padding: 10px 0;">
 			<div class="col-xl-2 col-lg-4 col-md-4 col-sm-8 mx-auto" >
 				<select name="state" id="state" style="height: 40px; width: 100%;" class="btn btn-primary dropdown-toggle">
 				  <option value="" selected="selected">Select a State</option>
+				  <!-- Each option has a specified latitude and longitude that points to the center of the state; will be used to create the overall google map with pins for each state -->
 					<option	data-geo = '{"lat":32.806671,"lng":-86.79113}'	value="AL">Alabama</option>
 					<option	data-geo = '{"lat":61.370716,"lng":-152.404419}'	value="AK">Alaska</option>
 					<option	data-geo = '{"lat":33.729759,"lng":-111.431221}'	value="AZ">Arizona</option>
@@ -105,7 +109,8 @@
 	</div>
 	
 	<br>
-
+	
+	<!-- Main container to hold maps and park cards -->
 	<div class="container text-center">
 		<div class="row">
 			<div class="dropdown col-xl-2 col-lg-4 col-md-4 col-sm-8 mx-auto">
@@ -114,25 +119,30 @@
 			  </div>
 			</div>
 		</div>
-
+		
+		<!-- Div to hold maps -->
 		<div class="row justify-content-center">
+			<!-- Main attraction map -->
 			<div class="col-xl-6 col-lg-6 col-md-12 mx-auto">
 				<h5>Attraction Map</h5>
 				<div id="map" class="mainmap"></div>
 			</div>
+			<!-- Air quality map -->
 			<div class="col-xl-6 col-lg-6 col-md-12">
 				<h5>Air Quality Map</h5>
 				<div id="map2" class="mainmap"></div>
 			</div>
 		</div>
-
+		
+		<!-- Empty div that will hold the park cards that are created dynamically -->
 		<div class="content">
 		  <div id="parks-items">
 		    
 		  </div>
 		</div>
 	</div>
-
+	
+	<!-- footer -->
 	<div class="contactForm footer">
       <p style="color: #fff;">&copy; Find Your Nature. All Rights Reserved. </p>
       <a href="contact.html" style="color: #fff; text-decoration: underline;">Contact Us</a>
@@ -140,8 +150,11 @@
 
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	
+	<!-- Main JS file -->
 	<script type="text/javascript" src="assets/js/app.js"></script>
+
+	<!-- Google Maps API script -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6xKYoQQwDTBwDKHhn5mnzt2tvwdCi9Ns"></script>
 
 </body>
