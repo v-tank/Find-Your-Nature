@@ -202,11 +202,11 @@ function createCards(fullName, description, imgSrc, imgCap, url, parkCode) {
         ratingSum += parseInt(rate.rating);
 
         // Calculate the average and round down
-        var aveRating = Math.floor(ratingSum / num);
+        var aveRating = Math.round((ratingSum / num) * 10) / 10;
         
         // Only displays the average rating when the last rating has been reached (else it displays this info (num-1) times)
         if (i === (num - 1)) {
-          divToCreate.append("Average Rating: " + aveRating + "/5; Total Reviews: " + num);
+          divToCreate.append("<strong>Average Rating:</strong> " + aveRating + "/5; <strong>Total Reviews:</strong> " + num);
         }
       } 
       // increment the counter for the hack
