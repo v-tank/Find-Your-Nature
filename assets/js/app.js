@@ -1,6 +1,6 @@
 // Initiates Firebase
 var config = {
-  apiKey: "AIzaSyC9lq8l9sXlpUwQrGAWUda2qw_-faJUbiA",
+  apiKey: "P7AJxcyfoQIFEd6v6ZzwumqQ6rHcapfBSO0Pa6Bj",
   authDomain: "commentform-807d4.firebaseapp.com",
   databaseURL: "https://commentform-807d4.firebaseio.com",
   projectId: "commentform-807d4",
