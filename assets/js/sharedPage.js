@@ -34,7 +34,7 @@ function onPageLoad(){
     data: { 
       parkCode : urlParams.parkCode,  // parkCode variable grabbed from URL 
       fields: "images",
-      api_key:'dR9liF6s3ztufwHduTKv4mfNqrtq3iGWp8dxjzcr'
+      api_key:'P7AJxcyfoQIFEd6v6ZzwumqQ6rHcapfBSO0Pa6Bj'
     }
   }).done(function(alertResponse) {
 
